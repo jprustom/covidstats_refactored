@@ -2,6 +2,10 @@ h1{
     text-align:center;
     color:#4444ff;
 }
+div#date{
+    width:inherit;
+    margin:inherit;
+}
 option{
     text-transform: capitalize;
 }
@@ -51,4 +55,7 @@ form#add-stats>button[type='submit']:hover{
     background:#5d96ff;
     transform: scale(1.4);
     color:whitesmoke;
+}
+input{
+    width:100%;
 }

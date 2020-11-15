@@ -63,3 +63,12 @@ form>input[type='text']{
     background:#6a6aff;
     border-radius:30%;
 }
+@media(max-width:30rem){
+    #uploadFlagBtn,
+    button[type='submit']   {
+        font-size:1.3rem;
+    }
+    form>input[type='text']{
+        font-size:2rem;
+    }
+}

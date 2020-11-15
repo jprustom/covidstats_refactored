@@ -25,3 +25,15 @@ body{
     background-size:8rem;
     background-position: center;
 }
+@media(max-width:30rem){
+    button{
+        font-size:1.3rem;
+    }
+    label{
+        font-size:2rem
+    }
+
+    h1{
+        font-size:2rem;
+    }
+}
