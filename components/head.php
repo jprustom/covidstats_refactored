@@ -6,15 +6,18 @@
         $inside_utils=strpos($_SERVER['REQUEST_URI'],'utils');
         $inside_home=!$inside_routes&&!$inside_utils;
 
+        $path_to_favicon='./images/icon.png';
         $path_to_styles='./styles/';
         $path_to_utils='./utils/';
         if ($inside_routes){
                 $path_to_utils='../utils/';
                 $path_to_styles='../styles/';
+                $path_to_favicon='../images/icon.png';
         }
         else if ($inside_utils){
                 $path_to_utils='./';
                 $path_to_styles='../styles/';
+                $path_to_favicon='../images/icon.png';
         }
         require_once("$path_to_utils".'configs.php');
         require_once("$path_to_utils".'database.php');
@@ -27,6 +30,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title><?php echo getTitle()?></title>
         <meta name="description" content="">
+        <link rel="icon" type="image/png" href="<?php echo($path_to_favicon) ?>"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href=<?php echo($path_to_styles."main.css") ?>>
         <link rel="stylesheet" href=<?php echo($inside_home?$path_to_styles."index.css":null) ?>>
