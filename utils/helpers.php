@@ -5,7 +5,13 @@
         $coronastats_db_config['username'],
         $coronastats_db_config['password']);
 
-
+    function render_last_covidstats(){
+        global $mysql_instance;
+        foreach($mysql_instance->fetchLastStats() as $row){
+    
+            render_last_covidstats_entry($row->countryId,$row->countryFlagFileName,$row->countryName,$row->lastCases,$row->lastDeaths);
+        }
+        }
     function render_last_covidstats_entry(string $countryId,string $countryFlagFileName,string $countryName, string $lastCases, string $lastDeaths){
         $detailsPath="./routes/details.php?countryId=$countryId&countryName=$countryName&countryFlagFileName=$countryFlagFileName";
         print("
@@ -17,13 +23,9 @@
             </div>
         ");
     }
-    function render_last_covidstats(){
-        global $mysql_instance;
-        foreach($mysql_instance->fetchLastStats() as $row){
-   
-            render_last_covidstats_entry($row->countryId,$row->countryFlagFileName,$row->countryName,$row->lastCases,$row->lastDeaths);
-        }
-        }
+    function renderCountriesSelect(){
+        print ("<select name='country'>".getCountriesOptions()."</select>");
+    }
     function getCountriesOptions(){
         global $mysql_instance;
         $optionsContainer='';
@@ -37,9 +39,6 @@
             ";
         }
         return $optionsContainer;
-    }
-    function renderCountriesSelect(){
-        print ("<select name='country'>".getCountriesOptions()."</select>");
     }
     function displayErrorMessage(Exception $e){
         global $inside_utils;

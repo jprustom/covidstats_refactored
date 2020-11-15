@@ -25,6 +25,7 @@
         }
         else throw new Exception('Something went wrong when executing query:');
         
+        //Country inserted Successfully! Redirect.
         header('Location: ../index.php');
     }
     catch(Exception $e){
