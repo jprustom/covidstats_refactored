@@ -1,0 +1,65 @@
+
+form{
+    position: relative;
+    width:80%;
+    margin-left:10%;
+    font-size:4rem;
+    color:#4444ff;
+}
+input[type="file"]{
+    position:absolute;
+    margin-left:30%;
+    margin-top:5%;
+    z-index:-1;
+    display:block;
+    outline:none;
+}
+#uploadFlagBtn,
+button[type='submit']
+{
+    border-radius: 50% 50% 30% 30%;
+    padding:1.2rem;
+    color:#4444ff;
+    background:#6a6aff;
+    border:none;
+    outline: none;
+    cursor:pointer;
+    display:block;
+    font-size:3rem;
+    margin-bottom:10%;
+    box-shadow: 2px 3px 15px -2px rgba(165,90,255,0.85);
+}
+#uploadFlagBtn{
+    margin-left:10%;
+    width:80%;
+}
+button[type='submit']{
+    margin-top:5%;
+    margin-left:50%;
+    transform: translateX(-50%);
+    box-shadow: 2px 3px 15px -2px rgba(165,90,255,0.85);
+}
+#uploadFlagBtn:hover
+{
+    background:#5d96ff;
+    transform: scale(1.4);
+}
+button[type='submit']:hover{
+    background:#5d96ff;
+}
+form>label,
+form>input[type='text']{
+    display:block;
+    text-align:center;
+}
+form>input[type='text']{
+    box-shadow: 2px 3px 15px -2px rgba(165,90,255,0.85);
+    border:none;
+    outline:none;
+    font-size:4rem;
+    width:90%;
+    color:#4444ff;
+    margin-left:5%;
+    background:#6a6aff;
+    border-radius:30%;
+}

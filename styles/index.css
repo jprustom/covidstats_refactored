@@ -1,0 +1,109 @@
+h1:first-of-type{
+    margin-left:22.5vw;
+}
+#covidstats-table{
+    margin-top:3rem;
+    text-align:center;
+    width:90vw;
+    margin-left:5vw;
+}
+
+.covidstats-table__header,
+.covidstats-table__entry>div{
+    float:left;
+    width:25%;
+    height:10vh;
+    line-height: 5vh;
+    border:1px solid blue;
+    color:#4444ff;
+    font-size:.8rem;
+    vertical-align: middle;
+}
+.covidstats-table__entry>div{
+    height:5vh;
+}
+.covidstats-table__header{
+    font-weight: bolder;
+}
+.covidstats-table__header:nth-child(2){
+    line-height: 10vh;;
+}
+.covidstats-table__entry--country-flag>a>img{
+    display:inline-block;
+    width:100%;
+    height:100%;
+    
+}
+.covidstats-table__header:first-of-type,
+.covidstats-table__entry>div:first-of-type{
+    border:none;
+}
+.covidstats-table__entry--country-name>a{
+    text-transform: capitalize;
+}
+.covidstats-table__entry--country-name>a:hover{
+    color:white;
+    text-decoration: underline;
+    text-transform: uppercase;
+}
+.covidstats-table__entry--country-flag:hover{
+    transform:scale(1.2);
+}
+@media(min-width:25rem){
+   .covidstats-table__header{
+        line-height: 10vh;
+    }
+}
+@media(min-width:35rem){
+    .covidstats-table__header,
+    .covidstats-table__entry>div{  
+        font-size:1rem;
+    }
+}
+@media(min-width:45rem){
+    h1{
+        font-size:3rem;
+    }
+    .covidstats-table__header{
+        font-size: 1.6rem;
+        line-height: auto;
+    }
+    .covidstats-table__entry>div>a>img{
+        display:inline-block;
+        max-width: 430px;
+        max-height: 290px;;
+        
+    }
+    .covidstats-table__entry,
+    .covidstats-table__entry>div{  
+        height:25vh;
+        line-height:25vh;
+        font-size:2rem;
+    }
+
+    .covidstats-table__entry>div>a>img{
+        display:inline-block;
+        width:100%;
+        height:100%;
+        
+    }
+}
+@media(min-width:60rem){
+    .covidstats-table__header,
+    .covidstats-table__entry>div{  
+        line-height:auto;
+        border-width: 2px;
+    }
+
+
+}
+
+@media(min-width:93rem){
+    h1{
+        font-size:4rem;
+    }
+    .covidstats-table__header,
+    .covidstats-table__entry>div{
+        font-size:3rem;
+    }
+}
