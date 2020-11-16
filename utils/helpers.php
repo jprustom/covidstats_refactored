@@ -33,7 +33,7 @@
         foreach($countryObjArray as $countryObj){
             $countryName=ucwords($countryObj->countryName) ;
             $optionsContainer.="
-                <option value=$countryName>
+                <option value='$countryName'>
                     $countryName 
                 </option>
             ";
