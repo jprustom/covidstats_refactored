@@ -1,7 +1,12 @@
 <?php
     function render_last_covidstats(){
         global $mysql_instance;
-        foreach($mysql_instance->fetchLastStats() as $row){
+        $covidstats_rows=$mysql_instance->fetchLastStats();
+        if (count($covidstats_rows)==0){
+            print("<h1>No Countries Saved In Current Solution</h1>");
+            return;
+        }
+        foreach($covidstats_rows as $row){
             render_last_covidstats_entry($row->countryId,$row->countryFlagFileName,$row->countryName,$row->lastCases,$row->lastDeaths);
         }
         }
