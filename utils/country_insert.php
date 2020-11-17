@@ -1,7 +1,6 @@
 <?php 
-    include_once("./configs.php");  
-    include_once("./database.php");  
-    include_once("./helpers.php");  
+    require_once('../components/head.php'); 
+    require_once('../components/navigation.php');  
 ?>
 <?php
     try{
@@ -15,15 +14,15 @@
         $countryFlagName=uniqid().'_'.$_FILES['countryFlag']['name']; //For eg 5fb0387973385_france.png
 
         //1-Check if country exists
-        if ($mysql_instance->getCountryId($countryName))
+        if ($mysql_instance->getCountryId($countryName)){
+            $countryName=ucwords($countryName);
             throw new Exception("$countryName already exists in our solution.");
+        }
 
         //2-Add new country
-        if($mysql_instance->insertIntoCountries($countryName,$countryFlagName)){
-            $countryFlagTempName=$_FILES['countryFlag']['tmp_name'];
-            move_uploaded_file($countryFlagTempName,'../images/countriesFlags/'.$countryFlagName);
-        }
-        else throw new Exception('Something went wrong when executing query:');
+        $mysql_instance->insertIntoCountries($countryName,$countryFlagName);
+        $countryFlagTempName=$_FILES['countryFlag']['tmp_name'];
+        move_uploaded_file($countryFlagTempName,'../images/countriesFlags/'.$countryFlagName);
         
         //Country inserted Successfully! Redirect.
         header('Location: ../index.php');

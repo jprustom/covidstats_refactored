@@ -3,7 +3,9 @@
     <form id="add-stats" action=<?php echo($path_to_utils.'insert.php') ?>  method='post'>
         <div id='date'>
             <label for='date'>Date:</label>
-            <input required name='date' type='datetime-local'/>
+            <!-- I could have added a date type, but the specific format dd-mm-YYYY is required -->
+            <!-- The following regex is simple and basic, for simplicity purpose -->
+            <input required name='date' placeholder="dd-mm-YYYY" maxlength="10" pattern="^(0[1-9]|[12][0-9]|3[01])[- -.](0[1-9]|1[012])[- -.](19|20)\d\d$" type='text'/>
         </div>
         <div id='country'>
             <label for='country'>Country:</label>

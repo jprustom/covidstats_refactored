@@ -8,7 +8,7 @@
                 <div class="covidstats-table__header">Latest Deaths</div>
             </div>
              <div id="covidstats-table__entries">
-                   <?php render_last_covidstats() ?>
+                <?php render_last_covidstats() ?>
              </div>
             
         </section>

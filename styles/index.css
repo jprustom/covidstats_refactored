@@ -7,7 +7,6 @@ h1:first-of-type{
     width:90vw;
     margin-left:5vw;
 }
-
 .covidstats-table__header,
 .covidstats-table__entry>div{
     float:left;
@@ -32,7 +31,7 @@ h1:first-of-type{
     display:inline-block;
     width:100%;
     height:100%;
-    
+
 }
 .covidstats-table__header:first-of-type,
 .covidstats-table__entry>div:first-of-type{

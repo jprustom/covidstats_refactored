@@ -1,7 +1,7 @@
 <?php 
-    include_once("./configs.php");  
-    include_once("./database.php");  
-    include_once("./helpers.php");  
+    date_default_timezone_set ('Asia/Beirut'); 
+    require_once('../components/head.php'); 
+    require_once('../components/navigation.php');
 ?>
 <?php
     try{
@@ -12,6 +12,11 @@
 
         $country=$_POST['country'];
         $date=$_POST['date'];
+        if (!preg_match("/^(0[1-9]|[12][0-9]|3[01])[- -.](0[1-9]|1[012])[- -.](19|20)\d\d$/",$date))
+            throw new Exception("Please enter a valid date in the format dd-mm-YYYY");
+        $today_date=(date("Y-m-d"));
+        if ($date>$today_date)
+            throw new Exception("Cannot insert future date $date!");
         //When parsing the data from body it will all be of type string
         //In my database class I will check with my PDO the int types
         $new_cases=$_POST['newCases'];
@@ -19,7 +24,7 @@
         
         $mysql_instance->insertNewCoronaStats($country,$date,$new_cases,$new_deaths);
 
-        header('Location: ../index.php');
+        header('Location: ../routes/add.php');
     }
     catch(Exception $e){
         displayErrorMessage($e);

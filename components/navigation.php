@@ -1,10 +1,10 @@
 
 <section id="navbar">
-    <img src=<?php echo(($inside_routes?'..':'.')."/images/icon.png") ?> />
+    <img src=<?php echo((($inside_routes || $inside_utils)?'..':'.')."/images/icon.png") ?> />
     <nav id="links">
-        <a id="home" href=<?php echo(getPathToHome()); ?>>Last Stats</a>
-        <a href=<?php echo(getPathToRoutes("add_stats")); ?>>Add Stats</a>
-        <a href=<?php  echo(getPathToRoutes("add_country")); ?>>Add Country</a>
+        <a id="home" href=<?php echo(Configs::getPathToHome()); ?>>Last Stats</a>
+        <a href=<?php echo(Configs::getPathToRoutes("add")); ?>>Add Stats</a>
+        <a href=<?php  echo(Configs::getPathToRoutes("add_country")); ?>>Add Country</a>
     </nav>
 </section>
 

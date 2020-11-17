@@ -6,7 +6,7 @@
 ?>
 <body>
     <h1><?php echo($_GET['countryName']) ?></h1>
-    <img id='countryFlag' src=<?php echo($countryFlagImagePath) ?> />
+    <img id='countryFlag' alt="Flag" src=<?php echo($countryFlagImagePath) ?> />
     <ul>
         <?php 
             //I chose this method instead of running another unecessary query
@@ -14,7 +14,7 @@
             $totalDeaths=0;
             foreach ($countryStats as $countryStat){
                 $date=$countryStat->date;
-                $date=date("m-d-Y", strtotime($date));
+                $date=date("d F Y", strtotime($date));
                 $cases=$countryStat->lastCases;
                 $deaths=$countryStat->lastDeaths;
 

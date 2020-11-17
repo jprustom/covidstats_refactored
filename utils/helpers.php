@@ -1,14 +1,7 @@
 <?php
-    $mysql_instance=new MySQLDatabase(
-        $coronastats_db_config['host'],
-        $coronastats_db_config['database'],
-        $coronastats_db_config['username'],
-        $coronastats_db_config['password']);
-
     function render_last_covidstats(){
         global $mysql_instance;
         foreach($mysql_instance->fetchLastStats() as $row){
-    
             render_last_covidstats_entry($row->countryId,$row->countryFlagFileName,$row->countryName,$row->lastCases,$row->lastDeaths);
         }
         }
@@ -24,12 +17,17 @@
         ");
     }
     function renderCountriesSelect(){
-        print ("<select name='country'>".getCountriesOptions()."</select>");
+        print ("<select required name='country'>".getCountriesOptions()."</select>");
     }
     function getCountriesOptions(){
         global $mysql_instance;
         $optionsContainer='';
-        $countryObjArray=$mysql_instance->fetchAllCountries();
+        try{
+            $countryObjArray=$mysql_instance->fetchAllCountries();
+        }
+        catch(Exception $e){
+            displayErrorMessage($e);
+        }
         foreach($countryObjArray as $countryObj){
             $countryName=ucwords($countryObj->countryName) ;
             $optionsContainer.="
@@ -41,11 +39,8 @@
         return $optionsContainer;
     }
     function displayErrorMessage(Exception $e){
-        global $inside_utils;
-        if ($inside_utils)
-            include('../components/head.php'); 
         $messageToDisplay=$e->getMessage();
         print_r("<h1>$messageToDisplay</h1>");
-        header( "refresh:3;url=../" );
+        die();
     }
 ?>
