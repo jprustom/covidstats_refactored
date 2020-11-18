@@ -12,16 +12,16 @@
 
         $country=$_POST['country'];
         $date=$_POST['date'];
-        if (!preg_match("/^(0[1-9]|[12][0-9]|3[01])[- -.](0[1-9]|1[012])[- -.](19|20)\d\d$/",$date))
+        if (!preg_match("/^(0[1-9]|[12][0-9]|3[01])[- -.](Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[- -.](19|20)\d\d$/",$date))
             throw new Exception("Please enter a valid date in the format dd-mm-YYYY");
-        $today_date=(date("Y-m-d"));
+
+        $today_date=(date("d-M-Y"));
         if ($date>$today_date)
             throw new Exception("Cannot insert future date $date!");
         //When parsing the data from body it will all be of type string
         //In my database class I will check with my PDO the int types
         $new_cases=$_POST['newCases'];
         $new_deaths=$_POST['newDeaths'];
-        
         $mysql_instance->insertNewCoronaStats($country,$date,$new_cases,$new_deaths);
 
         header('Location: ../routes/add.php');

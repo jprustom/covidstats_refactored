@@ -7,9 +7,9 @@
                 <div class="covidstats-table__header">Latest Cases</div>
                 <div class="covidstats-table__header">Latest Deaths</div>
             </div>
-             <div id="covidstats-table__entries">
+            <div id="covidstats-table__entries">
                 <?php render_last_covidstats() ?>
-             </div>
+            </div>
             
         </section>
 </body>

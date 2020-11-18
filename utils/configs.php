@@ -10,7 +10,7 @@
             global $inside_utils;
             if ($inside_routes || $inside_utils)
                 return '../images/icon.png';
-            return './utils/';
+            return './images/icon.png';
         }
         public static function getPathToStyles(){
             global $inside_routes;
@@ -22,8 +22,8 @@
         public static $coronastats_db_config=[
             "host"=>'localhost',
             "database"=>'coronavirus',
-            "username"=>'jeanpaulrustom',
-            "password"=>'iL0vePr0gramm$ng'
+            "username"=>'root',
+            "password"=>''
         ];
         public static function getPageTitle(){
             global $inside_add_country;

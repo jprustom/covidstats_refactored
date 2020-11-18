@@ -13,17 +13,26 @@ h1:first-of-type{
     width:25%;
     height:10vh;
     line-height: 5vh;
-    border:1px solid blue;
+    border:1px solid rgb(47, 47, 255);
     color:#4444ff;
     font-size:.8rem;
     vertical-align: middle;
 }
+.covidstats-table__header{
+    font-weight: bolder;
+    z-index:1;
+    background:rgba(0, 247, 255,.5);
+    color:#0000ff;
+    border:1.4px solid blue;
+    line-height:10vh;
+}
 .covidstats-table__entry>div{
     height:5vh;
 }
-.covidstats-table__header{
-    font-weight: bolder;
+.covidstats-table__entry:hover>div{
+    background:rgba(0, 192, 199, 0.5);
 }
+
 .covidstats-table__header:nth-child(2){
     line-height: 10vh;;
 }
@@ -36,6 +45,7 @@ h1:first-of-type{
 .covidstats-table__header:first-of-type,
 .covidstats-table__entry>div:first-of-type{
     border:none;
+    background:transparent;
 }
 .covidstats-table__entry--country-name>a{
     text-transform: capitalize;
@@ -48,9 +58,13 @@ h1:first-of-type{
 .covidstats-table__entry--country-flag:hover{
     transform:scale(1.2);
 }
-@media(min-width:25rem){
-   .covidstats-table__header{
-        line-height: 10vh;
+
+@media(max-width:25rem){
+    .covidstats-table__entry>div{
+        font-size:.4rem;
+    }
+    .covidstats-table__header{
+        line-height: 5vh;
     }
 }
 @media(min-width:35rem){
@@ -60,7 +74,7 @@ h1:first-of-type{
     }
 }
 @media(min-width:45rem){
-    h1{
+    h1:first-of-type{
         font-size:3rem;
     }
     .covidstats-table__header{
@@ -71,13 +85,13 @@ h1:first-of-type{
         display:inline-block;
         max-width: 430px;
         max-height: 290px;;
-        
+
     }
     .covidstats-table__entry,
     .covidstats-table__entry>div{  
         height:25vh;
         line-height:25vh;
-        font-size:2rem;
+        font-size:1.5rem;
     }
 
     .covidstats-table__entry>div>a>img{

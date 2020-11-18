@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2020 at 02:14 PM
+-- Generation Time: Nov 18, 2020 at 10:03 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.32
 
@@ -53,9 +53,9 @@ INSERT INTO `countries` (`id`, `countryName`, `countryFlagFilename`) VALUES
 
 CREATE TABLE `covidstats` (
   `id` int(10) UNSIGNED NOT NULL,
-  `lastCases` int(10) UNSIGNED DEFAULT NULL,
-  `lastDeaths` int(10) UNSIGNED DEFAULT NULL,
-  `date` date DEFAULT NULL,
+  `lastCases` int(10) UNSIGNED NOT NULL,
+  `lastDeaths` int(10) UNSIGNED NOT NULL,
+  `date` date NOT NULL,
   `countryId` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -72,7 +72,8 @@ INSERT INTO `covidstats` (`id`, `lastCases`, `lastDeaths`, `date`, `countryId`) 
 (27, 1, 1, '2020-11-16', 7),
 (29, 2, 2, '2020-11-17', 6),
 (31, 1, 1, '2020-11-17', 10),
-(44, 193, 3, '2020-11-17', 8);
+(44, 193, 3, '2020-11-17', 8),
+(46, 1000, 1000, '2020-11-18', 4);
 
 --
 -- Indexes for dumped tables
@@ -105,7 +106,7 @@ ALTER TABLE `countries`
 -- AUTO_INCREMENT for table `covidstats`
 --
 ALTER TABLE `covidstats`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- Constraints for dumped tables

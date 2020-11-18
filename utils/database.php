@@ -61,7 +61,7 @@
             $pdoStatementDeletePreviousStats=$this->dbh->prepare($sqlStatementDeletePreviousStats);
             $pdoStatementDeletePreviousStats->bindValue('countryId',$countryId,PDO::PARAM_STR);
             $pdoStatementDeletePreviousStats->bindValue('dateOfStat',$date,PDO::PARAM_STR);
-            $pdoStatementDeletePreviousStats->bindValue('dateFormat','%d-%m-%Y',PDO::PARAM_STR);
+            $pdoStatementDeletePreviousStats->bindValue('dateFormat','%d-%b-%Y',PDO::PARAM_STR);
             if (!$pdoStatementDeletePreviousStats->execute())
                 throw new Exception('An error occured while trying to check if stat already exists.');
         }
@@ -74,11 +74,11 @@
             $pdoStatementInsertIntoCountries=$this->dbh->prepare($sqlStatementInsertStats);
             $pdoStatementInsertIntoCountries->bindValue('countryId',$countryId,PDO::PARAM_STR);
             $pdoStatementInsertIntoCountries->bindValue('date',$date,PDO::PARAM_STR);
-            $pdoStatementInsertIntoCountries->bindValue('dateFormat','%d-%m-%Y',PDO::PARAM_STR);
+            $pdoStatementInsertIntoCountries->bindValue('dateFormat','%d-%b-%Y',PDO::PARAM_STR);
             $pdoStatementInsertIntoCountries->bindValue('lastCases',$newCases,PDO::PARAM_INT);
             $pdoStatementInsertIntoCountries->bindValue('lastDeaths',$newDeaths,PDO::PARAM_INT);
             if(!$pdoStatementInsertIntoCountries->execute())
-                throw new Exception('Something went wront while inserting new corona stats');
+                throw new Exception('Something went wrong while inserting new corona stats');
         }
         //The function below will help me in rendering the add stats form
         function fetchAllCountries(){

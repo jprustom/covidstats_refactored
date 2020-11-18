@@ -5,7 +5,7 @@
             <label for='date'>Date:</label>
             <!-- I could have added a date type, but the specific format dd-mm-YYYY is required -->
             <!-- The following regex is simple and basic, for simplicity purpose -->
-            <input required name='date' placeholder="dd-mm-YYYY" maxlength="10" pattern="^(0[1-9]|[12][0-9]|3[01])[- -.](0[1-9]|1[012])[- -.](19|20)\d\d$" type='text'/>
+            <input required name='date' placeholder="dd-mmmm-YYYY" maxlength="11" pattern="^(0[1-9]|[12][0-9]|3[01])[- -.](Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[- -.](19|20)\d\d$" type='text'/>
         </div>
         <div id='country'>
             <label for='country'>Country:</label>
