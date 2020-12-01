@@ -1,5 +1,6 @@
 <?php
 
+
     class Countries{
         
         //I prefer reaching out to dbh at each query, rather than defining it as a private variable here

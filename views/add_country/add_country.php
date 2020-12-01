@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
     <?php require_once('../../bootstrap.php'); ?>
-    
+    <?php if (!$_SESSION['user'])
+        header('Location:../auth/signIn.php');?>
     <?php Configs::generateHead('Add Country','../shared/images/icon.png',[
         "../shared/main.css",
         "../shared/navbar.css",
@@ -9,7 +10,11 @@
     ],[
         "homeLink"=>"../index/index.php",
         "addStatsLink"=>"../add/add.php",
-        "addCountryLink"=>""
+        "addCountryLink"=>"",
+        "signInLink"=>"../auth/signIn.php",
+        "signUpLink"=>"../auth/signUp.php",
+        "signOutLink"=>"../../controllers/auth/signOut.php",
+        "changePassLink"=>"../auth/changePass.php"
     ]) ?>
         <body>
             <h1>Please enter below the country to be added</h1>

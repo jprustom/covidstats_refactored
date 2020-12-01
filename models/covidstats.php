@@ -20,7 +20,7 @@
                 $result=$pdoStatementLastStats->fetchAll(PDO::FETCH_OBJ);
                 return $result;
         }
-            throw new Error('Error while fetching last stats');
+            throw new Exception('Error while fetching last stats');
         }
 
         private static function deletePreviousStats(int $countryId,string $date){

@@ -10,18 +10,37 @@
             $homeLink=$navbarLinks['homeLink'];
             $addStatsLink=$navbarLinks['addStatsLink'];
             $addCountryLink=$navbarLinks['addCountryLink'];
-            return(
-                "
-                    <section id='navbar'>
-                        <img src=$navbarIconPath />
-                        <nav id='links'>
-                            <a id='home' href=$homeLink>Last Stats</a>
-                            <a href=$addStatsLink>Add Stats</a>
-                            <a href=$addCountryLink>Add Country</a>
-                        </nav>
-                    </section>
-                "
-            );
+            $signInLink=$navbarLinks['signInLink'];
+            $signUpLink=$navbarLinks['signUpLink'];
+            $signOutLink=$navbarLinks['signOutLink'];
+            $changePassLink=$navbarLinks['changePassLink'];
+            return
+                isset($_SESSION['user'])
+                    ?(
+                        "   
+                            <section id='navbar'>
+                                <img src=$navbarIconPath />
+                                <nav id='links'>
+                                    <a id='home' href=$signOutLink>Sign Out</a>
+                                    <a id='home' href=$changePassLink>Change Password</a>
+                                    <a id='home' href=$homeLink>Last Stats</a>
+                                    <a href=$addStatsLink>Add Stats</a>
+                                    <a href=$addCountryLink>Add Country</a>
+                                </nav>
+                            </section>
+                        "
+                    )
+                    :("
+                        <section id='navbar'>
+                            <img src=$navbarIconPath />
+                            <nav id='links'>
+                                <a id='home' href=$homeLink>Last Stats</a>
+                                <a href=$signInLink>Sign In</a>
+                                <a href=$signUpLink>Sign Up</a>
+                                
+                            </nav>
+                        </section>
+                    ");
         }
         private static function generateStylesheets(array $stylesheetsPaths){
             $styleSheetsToReturn='';

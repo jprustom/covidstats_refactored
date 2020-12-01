@@ -1,0 +1,34 @@
+form{
+    text-align:center;
+}
+form>label{
+    display:block;
+    font-size:1.6rem;
+    color:blue;
+}
+form>input{
+    font-size:1.6rem;
+    margin:2rem 0;
+    width:70%;
+    background:rgb(85, 85, 180);
+    outline:none;
+    border:none;
+    border-radius:0 0 15% 15%;
+    color:white;
+    text-align:center;
+}
+button{
+    display:block;
+    text-align:center;
+    margin:auto;
+    width:4rem;
+    height:3.4rem;
+    font-size:2.4rem;
+    box-shadow: 2px 3px 15px -2px rgba(0, 140, 206, 0.85);
+    color:blue;
+    background-color: rgb(82, 82, 255);
+    outline:none;
+    border:none;
+    border-radius:20%;
+    cursor:pointer;
+}

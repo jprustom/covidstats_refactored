@@ -10,7 +10,7 @@
         
     }
     catch(Exception $e){
-        print($e->getMessage());
+        Configs::displayErrorMessage($e);
     }
 
 

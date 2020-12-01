@@ -1,11 +1,17 @@
 <?php include('../bootstrap.php');?>
+<?php if (!$_SESSION['user'])
+        header('Location:../views/auth/signIn.php');?>
 <?php Configs::generateHead('Error!','../views/shared/images/icon.png',[
         "../views/shared/main.css",
         "../views/shared/navbar.css",
     ],[
         "homeLink"=>"../views/index/index.php",
         "addStatsLink"=>"../views/add/add.php",
-        "addCountryLink"=>"../views/add_country/add_country.php"
+        "addCountryLink"=>"../views/add_country/add_country.php",
+        "signInLink"=>"../views/auth/signIn.php",
+        "signUpLink"=>"../views/auth/signUp.php",
+        "signOutLink"=>"signout.php",
+        "changePassLink"=>"../views/auth/changePass.php"
     ]) ?>
 <?php
     try{

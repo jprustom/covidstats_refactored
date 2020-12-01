@@ -1,3 +1,4 @@
+<?php session_start(['name'=>'covidstats']) ?>
 <?php 
         function importClass($class_name) {
                 $class_name=strtolower($class_name);

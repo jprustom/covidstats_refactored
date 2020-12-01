@@ -1,4 +1,6 @@
 <?php require_once('../../bootstrap.php'); ?>
+<?php if (!$_SESSION['user'])
+        header('Location:../auth/signIn.php');?>
 <?php Configs::generateHead('Add Stats','../shared/images/icon.png',[
         "../shared/main.css",
         "../shared/navbar.css",
@@ -6,7 +8,11 @@
     ],[
         "homeLink"=>"../index/index.php",
         "addStatsLink"=>"",
-        "addCountryLink"=>"../add_country/add_country.php"
+        "addCountryLink"=>"../add_country/add_country.php",
+        "signInLink"=>"../auth/signIn.php",
+        "signUpLink"=>"../auth/signUp.php",
+        "signOutLink"=>"../../controllers/auth/signOut.php",
+        "changePassLink"=>"../auth/changePass.php"
     ]) ?>
 <?php require_once('../../controllers/add.php');?>
 <body>
