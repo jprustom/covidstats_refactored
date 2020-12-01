@@ -21,7 +21,7 @@ body{
     margin:0;
     padding-top:10vh;
     background-color: #8cb8ff;
-    background-image: url('../images/coronavirus.png');
+    background-image: url('./images/coronavirus.png');
     background-size:8rem;
     background-position: center;
 }

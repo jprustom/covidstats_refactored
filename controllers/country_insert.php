@@ -1,6 +1,6 @@
 <?php 
-    require_once('../components/head.php'); 
-    require_once('../components/navigation.php');  
+    require_once('../views/head.php'); 
+    require_once('../views/navigation.php');  
 ?>
 <?php
     try{
@@ -11,16 +11,19 @@
 
         //Extracting form data
         $countryName=$_POST['countryName']; //For eg france
+        $countryFlagFileType=$_FILES['countryFlag']['type']; //should have substring image starting from index 0
+        if (strpos($countryFlagFileType,'image')===false) //strict comparison is required
+            throw new Exception('Please provide an image.');
         $countryFlagName=uniqid().'_'.$_FILES['countryFlag']['name']; //For eg 5fb0387973385_france.png
 
         //1-Check if country exists
-        if ($mysql_instance->getCountryId($countryName)){
+        if ((MySQLDatabase::getMySqlDbh())->getCountryId($countryName)){
             $countryName=ucwords($countryName);
             throw new Exception("$countryName already exists in our solution.");
         }
 
         //2-Add new country
-        $mysql_instance->insertIntoCountries($countryName,$countryFlagName);
+        (MySQLDatabase::getMySqlDbh())->insertIntoCountries($countryName,$countryFlagName);
         $countryFlagTempName=$_FILES['countryFlag']['tmp_name'];
         move_uploaded_file($countryFlagTempName,'../images/countriesFlags/'.$countryFlagName);
         

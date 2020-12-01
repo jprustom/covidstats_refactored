@@ -1,7 +1,6 @@
 <?php
     function render_last_covidstats(){
-        global $mysql_instance;
-        $covidstats_rows=$mysql_instance->fetchLastStats();
+        $covidstats_rows=(MySQLDatabase::getMySqlDbh())->fetchLastStats();
         if (count($covidstats_rows)==0){
             print("<h1>No Countries Saved In Current Solution</h1>");
             return;
@@ -11,10 +10,10 @@
         }
         }
     function render_last_covidstats_entry(string $countryId,string $countryFlagFileName,string $countryName, string $lastCases, string $lastDeaths){
-        $detailsPath="./routes/details.php?countryId=$countryId&countryName=$countryName&countryFlagFileName=$countryFlagFileName";
+        $detailsPath="../details/details.php?countryId=$countryId&countryName=$countryName&countryFlagFileName=$countryFlagFileName";
         print("
             <div class='covidstats-table__entry'>
-                <div class='covidstats-table__entry--country-flag'><a href='$detailsPath'><img alt='$countryName flag' src='./images/countriesFlags/$countryFlagFileName'/></a></div>
+                <div class='covidstats-table__entry--country-flag'><a href='$detailsPath'><img alt='$countryName flag' src='../shared/images/countriesFlags/$countryFlagFileName'/></a></div>
                 <div class='covidstats-table__entry--country-name'><a href='$detailsPath'>$countryName</a></div>
                 <div>$lastCases</div>
                 <div>$lastDeaths</div>
@@ -25,10 +24,9 @@
         print ("<select required name='country'>".getCountriesOptions()."</select>");
     }
     function getCountriesOptions(){
-        global $mysql_instance;
         $optionsContainer='';
         try{
-            $countryObjArray=$mysql_instance->fetchAllCountries();
+            $countryObjArray=(MySQLDatabase::getMySqlDbh())->fetchAllCountries();
         }
         catch(Exception $e){
             displayErrorMessage($e);

@@ -1,8 +1,27 @@
-<?php
-    $countryName=$_GET['countryName'];
-    $countryFlagFileName=$_GET['countryFlagFileName'];
-    $countryFlagImagePath="../images/countriesFlags/$countryFlagFileName";
-    $countryStats=$mysql_instance->fetchCountryStats($_GET['countryId']);
+<?php require_once('../../bootstrap.php'); ?>
+
+<?php Configs::generateHead('Details','../shared/images/icon.png',[
+        "../shared/main.css",
+        "../shared/navbar.css"
+],[
+    "homeLink"=>"../index/index.php",
+    "addStatsLink"=>"../add/add.php",
+    "addCountryLink"=>"../add_country/add_country.php"
+]) ?>
+<?php 
+    try{
+        if(!isset($_GET['countryId']))
+            throw new Exception('country id not found!');
+        $countryId=$_GET['countryId'];
+
+        $countryName=$_GET['countryName'];
+        $countryFlagFileName=$_GET['countryFlagFileName'];
+        $countryFlagImagePath="../images/countriesFlags/$countryFlagFileName";
+        $countryStats=(MySQLDatabase::getMySqlDbh())->fetchCountryStats((int)($_GET['countryId']));
+    }
+    catch(Exception $e){
+        print($e->getMessage());
+    }
 ?>
 <body>
     <h1><?php echo($_GET['countryName']) ?></h1>
@@ -32,3 +51,4 @@
     </ul>
     <h1>Total:<?php echo($totalCases)?> Cases & <?php echo($totalDeaths)?> Deaths.</h1>
 </body>
+</html>

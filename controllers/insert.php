@@ -1,7 +1,7 @@
 <?php 
     date_default_timezone_set ('Asia/Beirut'); 
-    require_once('../components/head.php'); 
-    require_once('../components/navigation.php');
+    require_once('../views/head.php'); 
+    require_once('../views/navigation.php');
 ?>
 <?php
     try{
@@ -20,11 +20,11 @@
             throw new Exception("Cannot insert future date $date!");
         //When parsing the data from body it will all be of type string
         //In my database class I will check with my PDO the int types
-        $new_cases=$_POST['newCases'];
-        $new_deaths=$_POST['newDeaths'];
-        $mysql_instance->insertNewCoronaStats($country,$date,$new_cases,$new_deaths);
+        $new_cases=(int)($_POST['newCases']);
+        $new_deaths=(int)($_POST['newDeaths']);
+        (MySQLDatabase::getMySqlDbh())->insertNewCoronaStats($country,$date,$new_cases,$new_deaths);
 
-        header('Location: ../routes/add.php');
+        header('Location: ../add.php');
     }
     catch(Exception $e){
         displayErrorMessage($e);

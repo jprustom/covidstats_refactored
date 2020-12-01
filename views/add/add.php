@@ -1,6 +1,16 @@
+<?php require_once('../../bootstrap.php'); ?>
+
+<?php Configs::generateHead('Add Stats','../shared/images/icon.png',[
+        "../shared/main.css",
+        "../shared/navbar.css"
+    ],[
+        "homeLink"=>"../index/index.php",
+        "addStatsLink"=>"",
+        "addCountryLink"=>"../add_country/add_country.php"
+    ]) ?>
 <body>
     <h1>Add Cases</h1>
-    <form id="add-stats" action=<?php echo($path_to_utils.'insert.php') ?>  method='post'>
+    <form id="add-stats" action=<?php echo($path_to_controllers.'insert.php') ?>  method='post'>
         <div id='date'>
             <label for='date'>Date:</label>
             <!-- I could have added a date type, but the specific format dd-mm-YYYY is required -->
@@ -22,3 +32,4 @@
         <button type='submit'>OK</button>
     </form>
 </body>
+</html>
