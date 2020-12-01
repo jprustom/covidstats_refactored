@@ -10,7 +10,7 @@
         "addStatsLink"=>"../add/add.php",
         "addCountryLink"=>"../add_country/add_country.php"
     ]) ?>
-    <?php include_once('../../controllers/last_covid_stats.php');?>
+    <?php include_once('../../controllers/index.php');?>
     <body>
     <h1>Latest Covid Stats</h1>
         <section id="covidstats-table">

@@ -1,7 +1,12 @@
-<?php 
-    require_once('../views/head.php'); 
-    require_once('../views/navigation.php');  
-?>
+<?php include('../bootstrap.php');?>
+<?php Configs::generateHead('Error!','../views/shared/images/icon.png',[
+        "../views/shared/main.css",
+        "../views/shared/navbar.css",
+    ],[
+        "homeLink"=>"../views/index/index.php",
+        "addStatsLink"=>"../views/add/add.php",
+        "addCountryLink"=>"../views/add_country/add_country.php"
+    ]) ?>
 <?php
     try{
         //Additional server side verification
@@ -17,20 +22,20 @@
         $countryFlagName=uniqid().'_'.$_FILES['countryFlag']['name']; //For eg 5fb0387973385_france.png
 
         //1-Check if country exists
-        if ((MySQLDatabase::getMySqlDbh())->getCountryId($countryName)){
+        if (Countries::getCountryId($countryName)){
             $countryName=ucwords($countryName);
             throw new Exception("$countryName already exists in our solution.");
         }
 
         //2-Add new country
-        (MySQLDatabase::getMySqlDbh())->insertIntoCountries($countryName,$countryFlagName);
+        (Countries::insertIntoCountries($countryName,$countryFlagName));
         $countryFlagTempName=$_FILES['countryFlag']['tmp_name'];
-        move_uploaded_file($countryFlagTempName,'../images/countriesFlags/'.$countryFlagName);
+        move_uploaded_file($countryFlagTempName,'../views/shared/images/countriesFlags/'.$countryFlagName);
         
         //Country inserted Successfully! Redirect.
-        header('Location: ../index.php');
+        header('Location: ../views/index/index.php');
     }
     catch(Exception $e){
-        displayErrorMessage($e);
+        Configs::displayErrorMessage($e);
     }
 ?>

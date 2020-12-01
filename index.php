@@ -1,1 +1,1 @@
-<?php header("Location:routers/index.php");
+<?php header("Location:views/index/index.php");

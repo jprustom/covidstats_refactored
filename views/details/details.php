@@ -2,29 +2,16 @@
 
 <?php Configs::generateHead('Details','../shared/images/icon.png',[
         "../shared/main.css",
-        "../shared/navbar.css"
+        "../shared/navbar.css",
+        "details.css"
 ],[
     "homeLink"=>"../index/index.php",
     "addStatsLink"=>"../add/add.php",
     "addCountryLink"=>"../add_country/add_country.php"
 ]) ?>
-<?php 
-    try{
-        if(!isset($_GET['countryId']))
-            throw new Exception('country id not found!');
-        $countryId=$_GET['countryId'];
-
-        $countryName=$_GET['countryName'];
-        $countryFlagFileName=$_GET['countryFlagFileName'];
-        $countryFlagImagePath="../images/countriesFlags/$countryFlagFileName";
-        $countryStats=(MySQLDatabase::getMySqlDbh())->fetchCountryStats((int)($_GET['countryId']));
-    }
-    catch(Exception $e){
-        print($e->getMessage());
-    }
-?>
+<?php include_once('../../controllers/details.php'); ?>
 <body>
-    <h1><?php echo($_GET['countryName']) ?></h1>
+    <h1><?php echo($countryName) ?></h1>
     <img id='countryFlag' alt="Flag" src=<?php echo($countryFlagImagePath) ?> />
     <ul>
         <?php 

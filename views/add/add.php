@@ -1,16 +1,17 @@
 <?php require_once('../../bootstrap.php'); ?>
-
 <?php Configs::generateHead('Add Stats','../shared/images/icon.png',[
         "../shared/main.css",
-        "../shared/navbar.css"
+        "../shared/navbar.css",
+        "add.css"
     ],[
         "homeLink"=>"../index/index.php",
         "addStatsLink"=>"",
         "addCountryLink"=>"../add_country/add_country.php"
     ]) ?>
+<?php require_once('../../controllers/add.php');?>
 <body>
     <h1>Add Cases</h1>
-    <form id="add-stats" action=<?php echo($path_to_controllers.'insert.php') ?>  method='post'>
+    <form id="add-stats" action="../../controllers/insert.php"  method='post'>
         <div id='date'>
             <label for='date'>Date:</label>
             <!-- I could have added a date type, but the specific format dd-mm-YYYY is required -->
@@ -19,7 +20,18 @@
         </div>
         <div id='country'>
             <label for='country'>Country:</label>
-            <?php renderCountriesSelect()?>
+            <select required name='country'>
+                <?php
+                    foreach($countryObjArray as $countryObj){
+                        $countryName=ucwords($countryObj->countryName) ;
+                        print("
+                            <option value='$countryName'>
+                                $countryName 
+                            </option>
+                        ");
+                    }
+                ?>
+            </select>
         </div>
         <div id='newCases'>
             <label for='newCases'>Number of new cases:</label>

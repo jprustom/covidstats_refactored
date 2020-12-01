@@ -13,7 +13,7 @@
     ]) ?>
         <body>
             <h1>Please enter below the country to be added</h1>
-            <form method="post" enctype="multipart/form-data" action="../controllers/country_insert.php">
+            <form method="post" enctype="multipart/form-data" action="../../controllers/country_insert.php">
                 <input required name="countryFlag" type="file"/>
                 <button id="uploadFlagBtn">Upload Country Flag</button>
                 <label for="countryName">Country Name:</label>

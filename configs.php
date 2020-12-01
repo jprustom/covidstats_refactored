@@ -41,11 +41,16 @@
                     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
                     <meta name='viewport' content='width=device-width, initial-scale=1'>
                     <title>$pageTitle</title>
-                    <link rel='icon' type='image/png' href=$favIconPath/>
+                    <link rel='icon' type='image/png' href='$favIconPath'/>
                     $styleSheets
                 </head>
                 $navbar
             ");
+        }
+        public static function displayErrorMessage(Exception $e){
+            $messageToDisplay=$e->getMessage();
+            print_r("<h1>$messageToDisplay</h1>");
+            die();
         }
     }
 ?>

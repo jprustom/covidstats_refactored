@@ -1,8 +1,13 @@
-<?php 
-    date_default_timezone_set ('Asia/Beirut'); 
-    require_once('../views/head.php'); 
-    require_once('../views/navigation.php');
-?>
+<?php date_default_timezone_set ('Asia/Beirut'); ?>
+<?php include('../bootstrap.php');?>
+<?php Configs::generateHead('Error!','../views/shared/images/icon.png',[
+        "../views/shared/main.css",
+        "../views/shared/navbar.css",
+    ],[
+        "homeLink"=>"../views/index/index.php",
+        "addStatsLink"=>"../views/add/add.php",
+        "addCountryLink"=>"../views/add_country/add_country.php"
+    ]) ?>
 <?php
     try{
         if(!isset($_POST['date'])) throw new Exception('date was not set.');
@@ -22,12 +27,12 @@
         //In my database class I will check with my PDO the int types
         $new_cases=(int)($_POST['newCases']);
         $new_deaths=(int)($_POST['newDeaths']);
-        (MySQLDatabase::getMySqlDbh())->insertNewCoronaStats($country,$date,$new_cases,$new_deaths);
+        CovidStats::insertNewCoronaStats($country,$date,$new_cases,$new_deaths);
 
-        header('Location: ../add.php');
+        header('Location: ../views/add/add.php');
     }
     catch(Exception $e){
-        displayErrorMessage($e);
+        Configs::displayErrorMessage($e);
     }
 
 ?>
