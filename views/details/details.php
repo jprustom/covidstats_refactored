@@ -6,12 +6,11 @@
         "details.css"
 ],[
     "homeLink"=>"../index/index.php",
-    "addStatsLink"=>"../add/add.php",
-    "addCountryLink"=>"../add_country/add_country.php",
-    "signInLink"=>"../auth/signIn.php",
-    "signUpLink"=>"../auth/signUp.php",
-    "signOutLink"=>"../../controllers/auth/signOut.php",
-    "changePassLink"=>"../auth/changePass.php"
+    "statsLink"=>"../add/add.php",
+    "countriesLink"=>"../countriesCRUD/countriesCRUD.php",
+    "signInLink"=>"../admin/signIn.php",
+    "signOutLink"=>"../../controllers/admin/signOut.php",
+    "changePassLink"=>"../admin/changePass.php"
 ]) ?>
 <?php include_once('../../controllers/details.php'); ?>
 <body>

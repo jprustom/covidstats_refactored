@@ -36,19 +36,20 @@
             }
             throw new Exception('An error occured while trying to fetch user');
         }
-        public static function createUser($email,$password){
-            $dbh=MySQLDatabase::getMySqlDbh();
-            if (self::checkIfUserExists($email))
-                throw new Exception("User with email $email already exists.");
+    //     public static function createUser($email,$password){
+    //         $dbh=MySQLDatabase::getMySqlDbh();
+    //         if (self::checkIfUserExists($email))
+    //             throw new Exception("User with email $email already exists.");
             
-            $sqlStatementInsertIntoUsers='INSERT INTO users (email,password)
-                                            VALUES (:email,:password)';
-            $pdoStatementInsertIntoUsers=$dbh->prepare($sqlStatementInsertIntoUsers);
-            $pdoStatementInsertIntoUsers->bindValue('email',$email,PDO::PARAM_STR);
-            $pdoStatementInsertIntoUsers->bindValue('password',sha1($password),PDO::PARAM_STR);
-            if(!$pdoStatementInsertIntoUsers->execute()){; //returns false if execution fails, error is also printed
-                throw new Exception('Something went wrong when creating account');
-        }
-    }}
+    //         $sqlStatementInsertIntoUsers='INSERT INTO users (email,password)
+    //                                         VALUES (:email,:password)';
+    //         $pdoStatementInsertIntoUsers=$dbh->prepare($sqlStatementInsertIntoUsers);
+    //         $pdoStatementInsertIntoUsers->bindValue('email',$email,PDO::PARAM_STR);
+    //         $pdoStatementInsertIntoUsers->bindValue('password',sha1($password),PDO::PARAM_STR);
+    //         if(!$pdoStatementInsertIntoUsers->execute()){; //returns false if execution fails, error is also printed
+    //             throw new Exception('Something went wrong when creating account');
+    //     }
+    // }
+}
 
 ?>

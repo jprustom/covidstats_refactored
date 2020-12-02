@@ -1,4 +1,5 @@
 <?php
+    //PLEASE NOTE THAT I SET MY RELATED TABLES TO CASCADE ON DELETE & UPDATE
     class CovidStats{
         //The method below find the latest stats for each country to be displayed on home page index.php
         public static function fetchLastStats(){

@@ -1,8 +1,8 @@
 <?php if (!$_SESSION['user'])
-        header('Location:../views/auth/signIn.php');?>
+        header('Location:../../views/admin/signIn.php');?>
 <?php
     try{
-        $countryObjArray=Countries::fetchAllCountries();
+        $countries=Countries::fetchAllCountries();
     }
     catch(Exception $e){
         Configs::displayErrorMessage($e);

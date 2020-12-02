@@ -8,10 +8,9 @@
         ];
         private static function generateNavBar(string $navbarIconPath,array $navbarLinks){
             $homeLink=$navbarLinks['homeLink'];
-            $addStatsLink=$navbarLinks['addStatsLink'];
-            $addCountryLink=$navbarLinks['addCountryLink'];
+            $statsLink=$navbarLinks['statsLink'];
+            $countriesLink=$navbarLinks['countriesLink'];
             $signInLink=$navbarLinks['signInLink'];
-            $signUpLink=$navbarLinks['signUpLink'];
             $signOutLink=$navbarLinks['signOutLink'];
             $changePassLink=$navbarLinks['changePassLink'];
             return
@@ -24,8 +23,8 @@
                                     <a id='home' href=$signOutLink>Sign Out</a>
                                     <a id='home' href=$changePassLink>Change Password</a>
                                     <a id='home' href=$homeLink>Last Stats</a>
-                                    <a href=$addStatsLink>Add Stats</a>
-                                    <a href=$addCountryLink>Add Country</a>
+                                    <a href=$statsLink>Stats</a>
+                                    <a href=$countriesLink>Countries</a>
                                 </nav>
                             </section>
                         "
@@ -35,9 +34,7 @@
                             <img src=$navbarIconPath />
                             <nav id='links'>
                                 <a id='home' href=$homeLink>Last Stats</a>
-                                <a href=$signInLink>Sign In</a>
-                                <a href=$signUpLink>Sign Up</a>
-                                
+                                <a href=$signInLink>Admin</a>
                             </nav>
                         </section>
                     ");
@@ -72,66 +69,4 @@
             die();
         }
     }
-?>
-
-<?php
-
-    // $inside_add_country=strpos($_SERVER['REQUEST_URI'], 'add_country.php');
-    // $inside_add_stats=strpos($_SERVER['REQUEST_URI'], 'add.php');
-    // $inside_details=strpos($_SERVER['REQUEST_URI'],'details.php');
-    // require_once("$path_to_controllers".'../models/database.php');
-
-    // class Configs{
-    //     public static function getPathToFavicon(){
-    //         global $inside_routes;
-    //         global $inside_controllers;
-    //         if ($inside_routes || $inside_controllers)
-    //             return '../images/icon.png';
-    //         return './images/icon.png';
-    //     }
-    //     public static function getPathToStyles(){
-    //         global $inside_routes;
-    //         global $inside_controllers;
-    //         if ($inside_routes || $inside_controllers)
-    //             return '../styles/';
-    //         return './styles/';
-    //     }
-
-    //     public static function getPageTitle(){
-    //         global $inside_add_country;
-    //         global $inside_add_stats;
-    //         global $inside_details;
-    //         if ($inside_add_country)
-    //             return 'Add Country';
-    //         if ($inside_add_stats){
-    //             return 'Add new stats';
-    //         }
-    //         if($inside_details){
-    //             $countryName=ucwords($_GET['countryName']);
-    //             return "Details for $countryName";
-    //         }
-    //         //In home page
-    //         return 'Corona Last Stats';
-            
-    //     }
-    //     public static function getPathToRoutes($route_name){
-    //         global $inside_routes;
-    //         global $inside_controllers;
-    //         if ($inside_routes)
-    //             return("./$route_name.php");
-    //         if ($inside_controllers)
-    //             return("../$route_name.php");
-    //         //inside root index
-    //         return("./$route_name.php");
-    //     }
-    //     public static function getPathToHome(){
-    //         // global $inside_routes;
-    //         // global $inside_controllers;
-    //         // if ($inside_routes || $inside_controllers)
-    //         //     return('../index.php');
-    //         //inside root index
-    //         return('index.php');
-    //     }
-    // }
-
 ?>

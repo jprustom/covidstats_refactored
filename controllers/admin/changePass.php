@@ -4,20 +4,19 @@
         "../../views/shared/navbar.css",
     ],[
         "homeLink"=>"../../views/index/index.php",
-        "addStatsLink"=>"../views/add/add.php",
-        "addCountryLink"=>"../views/add_country/add_country.php",
-        "signInLink"=>"../../views/auth/signIn.php",
-        "signUpLink"=>"../../views/auth/signUp.php",
+        "statsLink"=>"../views/add/add.php",
+        "countriesLink"=>"../views/countriesCRUD/countriesCRUD.php",
+        "signInLink"=>"../../views/admin/signIn.php",
         "signOutLink"=>"signout.php",
-        "changePassLink"=>"../../views/auth/changePass.php"
+        "changePassLink"=>"../../views/admin/changePass.php"
     ]) ?>
 <?php
     try{
         if (!isset($_SESSION['user']))
-            return header('Location:../../views/auth/signIn.php');
+            return header('Location:../../views/admin/signIn.php');
         $user=$_SESSION['user'];
         if (!isset($user['email']))
-            return header('Location:../../views/auth/signIn.php');
+            return header('Location:../../views/admin/signIn.php');
         $email=$user['email'];
         if (!isset($_POST['oldPassword']))
             throw new Exception('old password was not provided');

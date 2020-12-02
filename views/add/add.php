@@ -1,20 +1,19 @@
 <?php require_once('../../bootstrap.php'); ?>
 <?php if (!$_SESSION['user'])
-        header('Location:../auth/signIn.php');?>
+        header('Location:../admin/signIn.php');?>
 <?php Configs::generateHead('Add Stats','../shared/images/icon.png',[
         "../shared/main.css",
         "../shared/navbar.css",
         "add.css"
     ],[
         "homeLink"=>"../index/index.php",
-        "addStatsLink"=>"",
-        "addCountryLink"=>"../add_country/add_country.php",
-        "signInLink"=>"../auth/signIn.php",
-        "signUpLink"=>"../auth/signUp.php",
-        "signOutLink"=>"../../controllers/auth/signOut.php",
-        "changePassLink"=>"../auth/changePass.php"
+        "statsLink"=>"",
+        "countriesLink"=>"../countriesCRUD/countriesCRUD.php",
+        "signInLink"=>"../admin/signIn.php",
+        "signOutLink"=>"../../controllers/admin/signOut.php",
+        "changePassLink"=>"../admin/changePass.php"
     ]) ?>
-<?php require_once('../../controllers/add.php');?>
+<?php require_once('../../controllers/countries/countries_get.php');?>
 <body>
     <h1>Add Cases</h1>
     <form id="add-stats" action="../../controllers/insert.php"  method='post'>
@@ -28,7 +27,8 @@
             <label for='country'>Country:</label>
             <select required name='country'>
                 <?php
-                    foreach($countryObjArray as $countryObj){
+                    foreach($countries as $countryObj){
+                        $countryName=$countryObj->name;
                         $countryName=ucwords($countryObj->countryName) ;
                         print("
                             <option value='$countryName'>

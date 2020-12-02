@@ -1,6 +1,11 @@
 h1:first-of-type{
     margin-left:22.5vw;
 }
+#covidstats-table__headers{
+    position:sticky;
+    top:10vh;
+
+}
 #covidstats-table{
     margin-top:3rem;
     text-align:center;

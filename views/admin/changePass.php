@@ -2,19 +2,18 @@
 <?php Configs::generateHead('Change Password','../shared/images/icon.png',[
         "../shared/main.css",
         "../shared/navbar.css",
-        "auth.css"
+        "admin.css"
     ],[
         "homeLink"=>"../index/index.php",
-        "addStatsLink"=>"../add/add.php",
-        "addCountryLink"=>"../add_country/add_country.php",
-        "signUpLink"=>"",
+        "statsLink"=>"../add/add.php",
+        "countriesLink"=>"../countriesCRUD/countriesCRUD.php",
         "signInLink"=>"signIn.php",
-        "signOutLink"=>"../../controllers/auth/signOut.php",
+        "signOutLink"=>"../../controllers/admin/signOut.php",
         "changePassLink"=>""
     ]) ?>
 <body>
 <h1>Change Password </h1>
-    <form method="post" action="../../controllers/auth/changePass.php">
+    <form method="post" action="../../controllers/admin/changePass.php">
         <label for="oldPassword">Old Password</label>
         <input required  type="password" name="oldPassword"/>
         <label for="newPassword">New Password</label>

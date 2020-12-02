@@ -1,0 +1,70 @@
+#countriesCRUD-table{
+    margin-top:15vh;
+    padding:2rem;
+}
+a#addCountry{
+    background:rgba(176, 237, 255, 0.8);
+    z-index:1000;
+    text-decoration: none;
+    margin:0 auto;
+    text-align:center;
+    font-size:3rem;
+    display:block;
+    position:fixed;
+    width:100%;
+    /* left:50vw; */
+    /* transform:translateX(-50%); */
+}
+
+a#addCountry:hover,
+.countriesCRUD-table__entry>div a:hover
+{
+    color:white;
+    text-transform: uppercase;
+    font-size:3.2rem;
+    text-decoration: underline;
+}
+.countriesCRUD-table__entry>div img:hover{
+    transform:scale(1.2);
+}
+
+.countriesCRUD-table__header{
+    float:left;
+    width:20%;
+    height:10vh;
+    border:1px solid rgb(47, 47, 255);
+    font-size:.8rem;
+    vertical-align: middle;
+    text-align:center;
+    font-size: 2rem;
+    font-weight: bolder;
+    z-index:1;
+    background:rgba(0, 247, 255,.5);
+    color:#0000ff;
+    border:1.4px solid blue;
+    line-height:10vh;
+}
+.countriesCRUD-table__entry>div{
+    vertical-align: middle;
+    text-align:center;
+    float:left;
+    width:20%;
+    height:20vh;
+    color:#4444ff;
+    line-height: 20vh;
+    font-size:2.3rem;
+    border:1px solid rgb(47, 47, 255);
+}
+
+.countriesCRUD-table__entry--country-flag>a>img{
+    display:inline-block;
+    width:100%;
+    height:100%;
+
+}
+.countriesCRUD-table__entry:hover>div{
+    background:rgba(0, 192, 199, 0.5);
+}
+.countriesCRUD-table__entry--country-name{
+    text-transform: capitalize;
+}

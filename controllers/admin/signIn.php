@@ -4,12 +4,11 @@
         "../../views/shared/navbar.css",
     ],[
         "homeLink"=>"../../views/index/index.php",
-        "addStatsLink"=>"../views/add/add.php",
-        "addCountryLink"=>"../views/add_country/add_country.php",
-        "signInLink"=>"../../views/auth/signIn.php",
-        "signUpLink"=>"../../views/auth/signUp.php",
+        "statsLink"=>"../views/add/add.php",
+        "countriesLink"=>"../views/countriesCRUD/countriesCRUD.php",
+        "signInLink"=>"../../views/admin/signIn.php",
         "signOutLink"=>"signout.php",
-        "changePassLink"=>"../../views/auth/changePass.php"
+        "changePassLink"=>"../../views/admin/changePass.php"
     ]) ?>
 <?php
     try{

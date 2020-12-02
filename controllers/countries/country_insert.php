@@ -1,17 +1,16 @@
-<?php include('../bootstrap.php');?>
+<?php include('../../bootstrap.php');?>
 <?php if (!$_SESSION['user'])
-        header('Location:../views/auth/signIn.php');?>
-<?php Configs::generateHead('Error!','../views/shared/images/icon.png',[
-        "../views/shared/main.css",
-        "../views/shared/navbar.css",
+        header('Location:../../views/admin/signIn.php');?>
+<?php Configs::generateHead('Error!','../../views/shared/images/icon.png',[
+        "../../views/shared/main.css",
+        "../../views/shared/navbar.css",
     ],[
-        "homeLink"=>"../views/index/index.php",
-        "addStatsLink"=>"../views/add/add.php",
-        "addCountryLink"=>"../views/add_country/add_country.php",
-        "signInLink"=>"../views/auth/signIn.php",
-        "signUpLink"=>"../views/auth/signUp.php",
+        "homeLink"=>"../../views/index/index.php",
+        "statsLink"=>"../../views/add/add.php",
+        "countriesLink"=>"../../views/countriesCRUD/countriesCRUD.php",
+        "signInLink"=>"../../views/admin/signIn.php",
         "signOutLink"=>"signout.php",
-        "changePassLink"=>"../views/auth/changePass.php"
+        "changePassLink"=>"../../views/admin/changePass.php"
     ]) ?>
 <?php
     try{
@@ -36,10 +35,10 @@
         //2-Add new country
         (Countries::insertIntoCountries($countryName,$countryFlagName));
         $countryFlagTempName=$_FILES['countryFlag']['tmp_name'];
-        move_uploaded_file($countryFlagTempName,'../views/shared/images/countriesFlags/'.$countryFlagName);
+        move_uploaded_file($countryFlagTempName,'../../views/shared/images/countriesFlags/'.$countryFlagName);
         
         //Country inserted Successfully! Redirect.
-        header('Location: ../views/index/index.php');
+        header('Location: ../../views/index/index.php');
     }
     catch(Exception $e){
         Configs::displayErrorMessage($e);

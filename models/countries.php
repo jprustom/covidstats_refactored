@@ -1,6 +1,6 @@
 <?php
 
-
+    //PLEASE NOTE THAT I SET MY RELATED TABLES TO CASCADE ON DELETE & UPDATE
     class Countries{
         
         //I prefer reaching out to dbh at each query, rather than defining it as a private variable here
@@ -24,10 +24,19 @@
             }
             throw new Exception('An error occured while trying to fetch country Id');
         }
+        public static function deleteCountry(int $countryId){
+            $dbh=MySQLDatabase::getMySqlDbh();
+            $sqlStatementDeleteCountry="DELETE FROM countries WHERE id=:countryId";
+            $pdoStatementDeleteCountry=$dbh->prepare($sqlStatementDeleteCountry);
+            $pdoStatementDeleteCountry->bindValue('countryId',$countryId);
+            if (!$pdoStatementDeleteCountry->execute())
+                throw new Exception('something went wrong when deleting country');
+            
+        }
         //The function below will help me in rendering the add stats form
         public static function fetchAllCountries(){
             $dbh=MySQLDatabase::getMySqlDbh();
-            $sqlStatementSelectAll="SELECT countryName FROM countries";
+            $sqlStatementSelectAll="SELECT * FROM countries";
             $pdoStatementSelectAll=$dbh->prepare($sqlStatementSelectAll); 
             if ($pdoStatementSelectAll->execute()){
                 $result=$pdoStatementSelectAll->fetchAll(PDO::FETCH_OBJ);
@@ -48,6 +57,30 @@
                 throw new Exception('Something went wrong when adding new country');
             }
         }
+
+        public static function getCountry(int $countryId){
+            $dbh=MySQLDatabase::getMySqlDbh();
+            $sqlStatementSelectCountry="SELECT * FROM countries WHERE id=:countryId";
+            $pdoStatementSelectCountry=$dbh->prepare($sqlStatementSelectCountry);
+            $pdoStatementSelectCountry->bindValue('countryId',$countryId,PDO::PARAM_INT);
+            if($pdoStatementSelectCountry->execute()){
+                $country_returned=$pdoStatementSelectCountry->fetch(PDO::FETCH_OBJ);
+                return $country_returned;
+            }
+            throw new Exception('An error occured while trying to fetch country Id');
+        }
+        public static function updateCountry(int $countryId,string $countryName,string $countryFlagFileName){
+            $dbh=MySQLDatabase::getMySqlDbh();
+            $sqlStatementUpdateCountry="UPDATE countries SET countryName=:countryName, countryFlagFilename=:countryFlagFileName
+                                        WHERE id=:countryId";
+            $pdoStatementUpdateCountry=$dbh->prepare($sqlStatementUpdateCountry);
+            $pdoStatementUpdateCountry->bindValue('countryName',$countryName);
+            $pdoStatementUpdateCountry->bindValue('countryFlagFileName',$countryFlagFileName);
+            $pdoStatementUpdateCountry->bindValue('countryId',$countryId);
+            if (!$pdoStatementUpdateCountry->execute())
+                throw new Exception('something went wrong when updating country');
+        }
     }
+    
 
 ?>
