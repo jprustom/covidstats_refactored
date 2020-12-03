@@ -13,6 +13,12 @@
             $signInLink=$navbarLinks['signInLink'];
             $signOutLink=$navbarLinks['signOutLink'];
             $changePassLink=$navbarLinks['changePassLink'];
+            $imageClick="<script>
+                            document.querySelector('#navbar>img').addEventListener('click',()=>{
+                                document.getElementById('home').click();
+                            });
+                        </script>
+                        ";
             return
                 isset($_SESSION['user'])
                     ?(
@@ -27,6 +33,7 @@
                                     <a href=$countriesLink>Countries</a>
                                 </nav>
                             </section>
+                            $imageClick
                         "
                     )
                     :("
@@ -37,6 +44,7 @@
                                 <a href=$signInLink>Admin</a>
                             </nav>
                         </section>
+                        $imageClick
                     ");
         }
         private static function generateStylesheets(array $stylesheetsPaths){

@@ -1,22 +1,22 @@
-<?php require_once('../../bootstrap.php'); ?>
+<?php require_once('../../../bootstrap.php'); ?>
 <?php if (!$_SESSION['user'])
-        header('Location:../admin/signIn.php');?>
-<?php Configs::generateHead('Add Stats','../shared/images/icon.png',[
-        "../shared/main.css",
-        "../shared/navbar.css",
-        "add.css"
+        header('Location:../../admin/signIn.php');?>
+<?php Configs::generateHead('Add Stats','../../shared/images/icon.png',[
+        "../../shared/main.css",
+        "../../shared/navbar.css",
+        "country_add_stat.css"
     ],[
-        "homeLink"=>"../index/index.php",
+        "homeLink"=>"../../statsCRUD/countries_last_stats_view/countries_last_stats_view.php",
         "statsLink"=>"",
-        "countriesLink"=>"../countriesCRUD/countriesCRUD.php",
-        "signInLink"=>"../admin/signIn.php",
-        "signOutLink"=>"../../controllers/admin/signOut.php",
+        "countriesLink"=>"../../countriesCRUD/countriesCRUD.php",
+        "signInLink"=>"../../admin/signIn.php",
+        "signOutLink"=>"../../../controllers/admin/signOut.php",
         "changePassLink"=>"../admin/changePass.php"
     ]) ?>
-<?php require_once('../../controllers/countries/countries_get.php');?>
+<?php require_once('../../../controllers/countriesCRUD/countries_get.php');?>
 <body>
     <h1>Add Cases</h1>
-    <form id="add-stats" action="../../controllers/insert.php"  method='post'>
+    <form id="add-stats" action="../../../controllers/statsCRUD/stats_insert.php"  method='post'>
         <div id='date'>
             <label for='date'>Date:</label>
             <!-- I could have added a date type, but the specific format dd-mm-YYYY is required -->

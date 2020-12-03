@@ -1,21 +1,21 @@
 <?php require_once('../../../bootstrap.php'); ?>
 <?php if (!$_SESSION['user'])
     header('Location:../../admin/signIn.php');?>
-<?php Configs::generateHead('Add Country','../../shared/images/icon.png',[
+<?php Configs::generateHead('Edit Country','../../shared/images/icon.png',[
     "../../shared/main.css",
     "../../shared/navbar.css",
     "country_edit.css"
 ],[
-    "homeLink"=>"../../index/index.php",
-    "statsLink"=>"../../add/add.php",
+    "homeLink"=>"../../statsCRUD/countries_last_stats_view/countries_last_stats_view.php",
+    "statsLink"=>"../../statsCRUD/statsCRUD.php",
     "countriesLink"=>"../countriesCRUD.php",
     "signInLink"=>"../../admin/signIn.php",
     "signOutLink"=>"../../../controllers/admin/signOut.php",
     "changePassLink"=>"../../admin/changePass.php"
 ]) ?>
-<?php require_once('../../../controllers/countries/country_get.php');?>
+<?php require_once('../../../controllers/countriesCRUD/country_get.php');?>
 <body>
-    <form enctype="multipart/form-data" method="POST" action='<?php echo("../../../controllers/countries/country_edit.php")?>'>
+    <form enctype="multipart/form-data" method="POST" action='<?php echo("../../../controllers/countriesCRUD/country_edit.php")?>'>
         <h1><?php echo("Edit $countryName")?></h1>
         <input name="countryName" value='<?php echo $countryName ?>'/>
         <img src='<?php echo("../../shared/images/countriesFlags/$countryFlagFileName") ?>'/>

@@ -1,0 +1,62 @@
+h1{
+    text-align:center;
+    color:#4444ff;
+}
+div#date{
+    width:inherit;
+    margin:inherit;
+}
+option{
+    text-transform: capitalize;
+}
+form#edit-stats{
+    width:80%;
+    margin:auto;
+    font-size:3.2rem;
+    text-align:center;
+    color:#4444ff
+}
+form#edit-stats>div{
+    margin-bottom:2%;
+}
+form#edit-stats input{
+    border:none;
+    border-radius:10%;
+    outline:none;
+    text-align:center;
+    font-size:3rem;
+    color:#4444ff;
+    background:#6a6aff;
+}
+form#edit-stats select{
+    border-radius:5%;
+    outline:none;
+    font-size:3rem;
+    color:#4444ff;
+    background:#6a6aff;
+}
+form#edit-stats>button[type='submit'],
+form#edit-stats>button[type='reset']
+{
+    border-radius: 50% 50% 30% 30%;
+    pediting:1.2rem;
+    color:#4444ff;
+    background:#6a6aff;
+    border:none;
+    outline: none;
+    cursor:pointer;
+    display:block;
+    font-size:3rem;
+    margin-top:7%;
+    box-shadow: 2px 3px 15px -2px rgba(165,90,255,0.85);
+    margin-left:35%;
+    width:30%;
+}
+form#edit-stats>button[type='submit']:hover{
+    background:#5d96ff;
+    transform: scale(1.4);
+    color:whitesmoke;
+}
+input{
+    width:100%;
+}

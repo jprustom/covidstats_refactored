@@ -1,12 +1,12 @@
-<?php include('../../bootstrap.php');?>
+<?php require_once('../../bootstrap.php');?>
 <?php if (!$_SESSION['user'])
         header('Location:../../views/admin/signIn.php');?>
 <?php Configs::generateHead('Error!','../../views/shared/images/icon.png',[
         "../../views/shared/main.css",
         "../../views/shared/navbar.css",
     ],[
-        "homeLink"=>"../../views/index/index.php",
-        "statsLink"=>"../../views/add/add.php",
+        "homeLink"=>"../../views/statsCRUD/countries_last_stats_view/countries_last_stats_view.php",
+        "statsLink"=>"../../views/statsCRUD.php",
         "countriesLink"=>"../../views/countriesCRUD/countriesCRUD.php",
         "signInLink"=>"../../views/admin/signIn.php",
         "signOutLink"=>"signout.php",
@@ -38,7 +38,7 @@
         move_uploaded_file($countryFlagTempName,'../../views/shared/images/countriesFlags/'.$countryFlagName);
         
         //Country inserted Successfully! Redirect.
-        header('Location: ../../views/index/index.php');
+        header('Location: ../../views/statsCRUD/countries_last_stats_view/countries_last_stats_view.php');
     }
     catch(Exception $e){
         Configs::displayErrorMessage($e);

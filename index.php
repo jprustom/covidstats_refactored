@@ -1,1 +1,1 @@
-<?php header("Location:views/index/index.php");
+<?php header("Location:views/statsCRUD/countries_last_stats_view/countries_last_stats_view.php");

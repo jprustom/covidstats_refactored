@@ -5,7 +5,7 @@
         $countryId=$_GET['countryId'];
         $countryName=$_GET['countryName'];
         $countryFlagFileName=$_GET['countryFlagFileName'];
-        $countryFlagImagePath="../shared/images/countriesFlags/$countryFlagFileName";
+        $countryFlagImagePath="../../shared/images/countriesFlags/$countryFlagFileName";
         $countryStats=CovidStats::fetchCountryStats((int)($countryId));
         
     }

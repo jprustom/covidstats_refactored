@@ -1,17 +1,17 @@
 <?php date_default_timezone_set ('Asia/Beirut'); ?>
-<?php include('../bootstrap.php');?>
+<?php require_once('../../bootstrap.php');?>
 <?php if (!$_SESSION['user'])
-        header('Location:../views/admin/signIn.php');?>
-<?php Configs::generateHead('Error!','../views/shared/images/icon.png',[
-        "../views/shared/main.css",
-        "../views/shared/navbar.css",
+    header('Location:../../admin/signIn.php');?>
+<?php Configs::generateHead('Error!','../../views/shared/images/icon.png',[
+        "../../views/shared/main.css",
+        "../../views/shared/navbar.css",
     ],[
-        "homeLink"=>"../views/index/index.php",
-        "statsLink"=>"../views/add/add.php",
-        "countriesLink"=>"../views/countriesCRUD/countriesCRUD.php",
-        "signInLink"=>"../views/admin/signIn.php",
+        "homeLink"=>"../../views/statsCRUD/countries_last_stats_view/countries_last_stats_view.php",
+        "statsLink"=>"../../views/statsCRUD.php",
+        "countriesLink"=>"../../views/countriesCRUD/countriesCRUD.php",
+        "signInLink"=>"../../views/admin/signIn.php",
         "signOutLink"=>"signout.php",
-        "changePassLink"=>"../views/admin/changePass.php"
+        "changePassLink"=>"../../views/admin/changePass.php"
     ]) ?>
 <?php
     try{
@@ -26,7 +26,7 @@
             throw new Exception("Please enter a valid date in the format dd-mm-YYYY");
 
         $today_date=(date("d-M-Y"));
-        if ($date>$today_date)
+        if (strtotime($date)>strtotime($today_date))
             throw new Exception("Cannot insert future date $date!");
         //When parsing the data from body it will all be of type string
         //In my database class I will check with my PDO the int types
@@ -34,7 +34,7 @@
         $new_deaths=(int)($_POST['newDeaths']);
         CovidStats::insertNewCoronaStats($country,$date,$new_cases,$new_deaths);
 
-        header('Location: ../views/add/add.php');
+        header('Location: ../../views/statsCRUD/statsCRUD.php');
     }
     catch(Exception $e){
         Configs::displayErrorMessage($e);

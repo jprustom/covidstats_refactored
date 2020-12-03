@@ -1,11 +1,13 @@
 <?php require_once('../../bootstrap.php');?>
+<?php if (!$_SESSION['user'])
+    header('Location:signIn.php');?>
 <?php Configs::generateHead('Change Password','../shared/images/icon.png',[
         "../shared/main.css",
         "../shared/navbar.css",
         "admin.css"
     ],[
-        "homeLink"=>"../index/index.php",
-        "statsLink"=>"../add/add.php",
+        "homeLink"=>"../statsCRUD/countries_last_stats_view/countries_last_stats_view.php",
+        "statsLink"=>"../statsCRUD/statsCRUD.php",
         "countriesLink"=>"../countriesCRUD/countriesCRUD.php",
         "signInLink"=>"signIn.php",
         "signOutLink"=>"../../controllers/admin/signOut.php",

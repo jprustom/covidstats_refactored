@@ -1,18 +1,18 @@
-<?php require_once('../../bootstrap.php'); ?>
+<?php require_once('../../../bootstrap.php'); ?>
 
-<?php Configs::generateHead('Details','../shared/images/icon.png',[
-        "../shared/main.css",
-        "../shared/navbar.css",
-        "details.css"
+<?php Configs::generateHead('Details','../../shared/images/icon.png',[
+        "../../shared/main.css",
+        "../../shared/navbar.css",
+        "country_view_stats.css"
 ],[
-    "homeLink"=>"../index/index.php",
-    "statsLink"=>"../add/add.php",
-    "countriesLink"=>"../countriesCRUD/countriesCRUD.php",
-    "signInLink"=>"../admin/signIn.php",
-    "signOutLink"=>"../../controllers/admin/signOut.php",
-    "changePassLink"=>"../admin/changePass.php"
+    "homeLink"=>"../countries_last_stats_view/countries_last_stats_view.php",
+    "statsLink"=>"../../statsCRUD/statsCRUD.php",
+    "countriesLink"=>"../../countriesCRUD/countriesCRUD.php",
+    "signInLink"=>"../../../admin/signIn.php",
+    "signOutLink"=>"../../../controllers/admin/signOut.php",
+    "changePassLink"=>"../../admin/changePass.php"
 ]) ?>
-<?php include_once('../../controllers/details.php'); ?>
+<?php include_once('../../../controllers/countriesCRUDCRUD/country_view_stats.php'); ?>
 <body>
     <h1><?php echo($countryName) ?></h1>
     <img id='countryFlag' alt="Flag" src=<?php echo($countryFlagImagePath) ?> />

@@ -5,11 +5,11 @@
         "../../views/shared/main.css",
         "../../views/shared/navbar.css",
     ],[
-        "homeLink"=>"../../views/index/index.php",
-        "statsLink"=>"../../views/add/add.php",
+        "homeLink"=>"../../views/statsCRUD/countries_last_stats_view/countries_last_stats_view.php",
+        "statsLink"=>"../../views/statsCRUD.php",
         "countriesLink"=>"../../views/countriesCRUD/countriesCRUD.php",
         "signInLink"=>"../../views/admin/signIn.php",
-        "signOutLink"=>"signout.php",
+        "signOutLink"=>"../admin/signout.php",
         "changePassLink"=>"../../views/admin/changePass.php"
     ]) ?>
 <?php

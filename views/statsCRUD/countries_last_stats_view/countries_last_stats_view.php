@@ -1,19 +1,19 @@
 
 <html>
-    <?php require_once("../../bootstrap.php") ?>
-    <?php Configs::generateHead('Last Stats','../shared/images/icon.png',[
-        "../shared/main.css",
-        "../shared/navbar.css",
-        "index.css"
+    <?php require_once("../../../bootstrap.php") ?>
+    <?php Configs::generateHead('Last Stats','../../shared/images/icon.png',[
+        "../../shared/main.css",
+        "../../shared/navbar.css",
+        "countries_last_stats_view.css"
     ],[
         "homeLink"=>"",
-        "statsLink"=>"../add/add.php",
-        "countriesLink"=>"../countriesCRUD/countriesCRUD.php",
-        "signInLink"=>"../admin/signIn.php",
-        "signOutLink"=>"../../controllers/admin/signOut.php",
-        "changePassLink"=>"../admin/changePass.php"
+        "statsLink"=>"../../statsCRUD/statsCRUD.php",
+        "countriesLink"=>"../../countriesCRUD/countriesCRUD.php",
+        "signInLink"=>"../../admin/signIn.php",
+        "signOutLink"=>"../../../controllers/admin/signOut.php",
+        "changePassLink"=>"../../admin/changePass.php"
     ]) ?>
-    <?php include_once('../../controllers/index.php');?>
+    <?php include_once('../../../controllers/statsCRUD/countries_last_stats_view.php');?>
     <body>
     <h1>Latest Covid Stats</h1>
         <section id="covidstats-table">
@@ -31,10 +31,10 @@
                         $countryName=$covidstat_row->countryName;
                         $lastCases=$covidstat_row->lastCases;
                         $lastDeaths=$covidstat_row->lastDeaths;
-                        $detailsPath="../details/details.php?countryId=$countryId&countryName=$countryName&countryFlagFileName=$countryFlagFileName";
+                        $detailsPath="../../statsCRUD/country_view_stats/country_view_stats.php?countryId=$countryId&countryName=$countryName&countryFlagFileName=$countryFlagFileName";
                         print("
                             <div class='covidstats-table__entry'>
-                                <div class='covidstats-table__entry--country-flag'><a href='$detailsPath'><img alt='$countryName flag' src='../shared/images/countriesFlags/$countryFlagFileName'/></a></div>
+                                <div class='covidstats-table__entry--country-flag'><a href='$detailsPath'><img alt='$countryName flag' src='../../shared/images/countriesFlags/$countryFlagFileName'/></a></div>
                                 <div class='covidstats-table__entry--country-name'><a href='$detailsPath'>$countryName</a></div>
                                 <div>$lastCases</div>
                                 <div>$lastDeaths</div>

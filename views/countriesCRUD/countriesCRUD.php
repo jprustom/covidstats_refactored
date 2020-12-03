@@ -6,15 +6,15 @@
     "../shared/navbar.css",
     "countriesCRUD.css"
 ],[
-    "homeLink"=>"../index/index.php",
-    "statsLink"=>"../add/add.php",
+    "homeLink"=>"../statsCRUD/countries_last_stats_view/countries_last_stats_view.php",
+    "statsLink"=>"../statsCRUD/statsCRUD.php",
     "countriesLink"=>"",
     "signInLink"=>"../admin/signIn.php",
     "signOutLink"=>"../../controllers/admin/signOut.php",
     "changePassLink"=>"../admin/changePass.php"
 ]) ?>
-<?php require_once('../../controllers/countries/countries_get.php');?>
-<a id="addCountry" href='./country_add/country_add.php'>Add Country</a>
+<?php require_once('../../controllers/countriesCRUD/countries_get.php');?>
+<a id="addCountry" href='country_add/country_add.php'>Add Country</a>
 <section id="countriesCRUD-table">
     <div id="countriesCRUD-table__headers">
                 <div class="countriesCRUD-table__header">Name</div>
@@ -29,14 +29,14 @@
                 $countryId=$country->id;
                 $countryFlagFileName=$country->countryFlagFilename;
                 $countryName=$country->countryName;
-                $detailsPath="../details/details.php?countryId=$countryId&countryName=$countryName&countryFlagFileName=$countryFlagFileName";
+                $detailsPath="../statsCRUD/country_view_stats/country_view_stats.php?countryId=$countryId&countryName=$countryName&countryFlagFileName=$countryFlagFileName";
                 print("
                     <div class='countriesCRUD-table__entry'>
                         <div class='countriesCRUD-table__entry--country-name'><a href='$detailsPath'>$countryName</a></div>
                         <div class='countriesCRUD-table__entry'>$countryId</div>
                         <div class='countriesCRUD-table__entry--country-flag'><a href='$detailsPath'><img alt='flag' src='../shared/images/countriesFlags/$countryFlagFileName'/></a></div>
                         <div class='countriesCRUD-table__entry'><a href='../../views/countriesCRUD/country_edit/country_edit.php?countryId=$countryId'>Edit</a></div>
-                        <div class='countriesCRUD-table__entry'><a href='../../controllers/countries/country_delete.php?countryId=$countryId&countryFlagFileName=$countryFlagFileName'>Delete</a></div>
+                        <div class='countriesCRUD-table__entry'><a href='../../controllers/countriesCRUD/country_delete.php?countryId=$countryId&countryFlagFileName=$countryFlagFileName'>Delete</a></div>
                     </div>
                 ");
             };

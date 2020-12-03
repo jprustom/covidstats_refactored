@@ -6,8 +6,8 @@
     "../../shared/navbar.css",
     "country_add.css"
 ],[
-    "homeLink"=>"../../index/index.php",
-    "statsLink"=>"../../add/add.php",
+    "homeLink"=>"../../statsCRUD/countries_last_stats_view/countries_last_stats_view.php",
+    "statsLink"=>"../../statsCRUD/statsCRUD.php",
     "countriesLink"=>"../countriesCRUD.php",
     "signInLink"=>"../../admin/signIn.php",
     "signOutLink"=>"../../../controllers/admin/signOut.php",
@@ -15,7 +15,7 @@
 ]) ?>
     <body>
         <h1>Please enter below the country to be added</h1>
-        <form method="post" enctype="multipart/form-data" action="../../../controllers/countries/country_insert.php">
+        <form method="post" enctype="multipart/form-data" action="../../../controllers/countriesCRUD/country_insert.php">
             <input required name="countryFlag" type="file"/>
             <button id="uploadFlagBtn">Upload Country Flag</button>
             <label for="countryName">Country Name:</label>

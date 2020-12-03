@@ -56,14 +56,31 @@
             if(!$pdoStatementInsertIntoCountries->execute())
                 throw new Exception('Something went wrong while inserting new corona stats');
         }
-
+        public static function updateStat(int $statId,array $statProps){
+            $countryId=$statProps['countryId'];
+            $date=$statProps['date'];
+            $lastCases=$statProps['lastCases'];
+            $lastDeaths=$statProps['lastDeaths'];
+            $dbh=MySQLDatabase::getMySqlDbh();
+            $sqlStatementUpdateCountry="UPDATE covidstats SET countryId=:countryId, date=STR_TO_DATE(:date,:dateFormat),lastCases=:lastCases,lastDeaths=:lastDeaths
+                                        WHERE id=:statId";
+            $pdoStatementUpdateCountry=$dbh->prepare($sqlStatementUpdateCountry);
+            $pdoStatementUpdateCountry->bindValue('statId',$statId,PDO::PARAM_INT);
+            $pdoStatementUpdateCountry->bindValue('date',$date,PDO::PARAM_STR);
+            $pdoStatementUpdateCountry->bindValue('dateFormat','%d-%b-%Y',PDO::PARAM_STR);
+            $pdoStatementUpdateCountry->bindValue('countryId',$countryId,PDO::PARAM_INT);
+            $pdoStatementUpdateCountry->bindValue('lastCases',$lastCases,PDO::PARAM_INT);
+            $pdoStatementUpdateCountry->bindValue('lastDeaths',$lastDeaths,PDO::PARAM_INT);
+            if (!$pdoStatementUpdateCountry->execute())
+                throw new Exception('something went wrong when updating country');
+        }
         //fetchCountryStats to display details of each country stats
         public static function fetchCountryStats(int $countryId){
             $dbh=MySQLDatabase::getMySqlDbh();
             $countryId=(int)($countryId);
             if ($countryId==0)
                 throw new Exception('invalid country Id');
-            $sqlStatementAllCountryStats="SELECT countryName,countryFlagFileName,date,lastCases,lastDeaths  
+            $sqlStatementAllCountryStats="SELECT covidstats.id,lastCases,lastDeaths,date,countryId,countries.countryName,countries.countryFlagFileName  
                 FROM covidstats  INNER JOIN countries
                 ON countries.id=covidstats.countryId   
                 WHERE countryId=:countryId   
@@ -76,6 +93,25 @@
             }
             throw new Exception("Error while fetching country stats");
         }
+        public static function deleteStat(int $statId){
+            $dbh=MySQLDatabase::getMySqlDbh();
+            $sqlStatementDeleteStat="DELETE FROM covidstats WHERE id=:statId";
+            $pdoStatementDeleteStat=$dbh->prepare($sqlStatementDeleteStat);
+            $pdoStatementDeleteStat->bindValue('statId',$statId);
+            if (!$pdoStatementDeleteStat->execute())
+                throw new Exception('something went wrong when deleting stat');
+        }
+        public static function getStat(int $statId){
+            $dbh=MySQLDatabase::getMySqlDbh();
+            $sqlStatementGetStat='SELECT * FROM covidstats WHERE id=:statId';
+            $pdoStatementGetStat=$dbh->prepare($sqlStatementGetStat);
+            $pdoStatementGetStat->bindValue('statId',$statId);
+            if (!$pdoStatementGetStat->execute())
+                throw new Exception('something went wrong while getting stat');
+            $result=$pdoStatementGetStat->fetch(PDO::FETCH_OBJ);
+            return $result;
+        }
             }
+
             
 ?>
