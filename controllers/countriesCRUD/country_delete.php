@@ -23,7 +23,7 @@
         if ($countryId===0)
             throw new Exception('Invalid countryId');
         \Models\Countries::deleteCountry($countryId);
-        unlink('../../views/shared/images/countriesFlags/$countryFlagFileName');
+        unlink("../../views/shared/images/countriesFlags/$countryFlagFileName");
         header('Location:../../views/countriesCRUD/countriesCRUD.php');
     }
     catch(Exception $e){
