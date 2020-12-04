@@ -5,7 +5,7 @@
         "../../views/shared/main.css",
         "../../views/shared/navbar.css",
     ],[
-        "homeLink"=>"../../views/statsCRUD/countries_last_stats_view/countries_last_stats_view.php",
+        "homeLink"=>"../../views/statsCRUD/countries_view_last_stats/countries_view_last_stats.php",
         "statsLink"=>"../../views/statsCRUD.php",
         "countriesLink"=>"../../views/countriesCRUD/countriesCRUD.php",
         "signInLink"=>"../../views/admin/signIn.php",
@@ -38,7 +38,7 @@
         move_uploaded_file($countryFlagTempName,'../../views/shared/images/countriesFlags/'.$countryFlagName);
         
         //Country inserted Successfully! Redirect.
-        header('Location: ../../views/statsCRUD/countries_last_stats_view/countries_last_stats_view.php');
+        header('Location: ../../views/statsCRUD/countries_view_last_stats/countries_view_last_stats.php');
     }
     catch(Exception $e){
         Configs::displayErrorMessage($e);

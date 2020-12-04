@@ -6,7 +6,7 @@
         "../shared/navbar.css",
         "admin.css"
     ],[
-        "homeLink"=>"../statsCRUD/countries_last_stats_view/countries_last_stats_view.php",
+        "homeLink"=>"../statsCRUD/countries_view_last_stats/countries_view_last_stats.php",
         "statsLink"=>"../statsCRUD/statsCRUD.php",
         "countriesLink"=>"../countriesCRUD/countriesCRUD.php",
         "signInLink"=>"signIn.php",

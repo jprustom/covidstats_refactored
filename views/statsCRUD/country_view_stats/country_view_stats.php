@@ -5,14 +5,14 @@
         "../../shared/navbar.css",
         "country_view_stats.css"
 ],[
-    "homeLink"=>"../countries_last_stats_view/countries_last_stats_view.php",
+    "homeLink"=>"../countries_view_last_stats/countries_view_last_stats.php",
     "statsLink"=>"../../statsCRUD/statsCRUD.php",
     "countriesLink"=>"../../countriesCRUD/countriesCRUD.php",
     "signInLink"=>"../../../admin/signIn.php",
     "signOutLink"=>"../../../controllers/admin/signOut.php",
     "changePassLink"=>"../../admin/changePass.php"
 ]) ?>
-<?php include_once('../../../controllers/countriesCRUDCRUD/country_view_stats.php'); ?>
+<?php include_once('../../../controllers/countriesCRUD /country_view_stats.php'); ?>
 <body>
     <h1><?php echo($countryName) ?></h1>
     <img id='countryFlag' alt="Flag" src=<?php echo($countryFlagImagePath) ?> />

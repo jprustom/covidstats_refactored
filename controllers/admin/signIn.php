@@ -3,7 +3,7 @@
         "../../views/shared/main.css",
         "../../views/shared/navbar.css",
     ],[
-        "homeLink"=>"../../views/statsCRUD/countries_last_stats_view/countries_last_stats_view.php",
+        "homeLink"=>"../../views/statsCRUD/countries_view_last_stats/countries_view_last_stats.php",
         "statsLink"=>"../views/statsCRUD.php",
         "countriesLink"=>"../views/countriesCRUD/countriesCRUD.php",
         "signInLink"=>"../../views/admin/signIn.php",
@@ -26,7 +26,7 @@
             "email"=>$email,
             "password"=>sha1($password)
         ];
-        header('Location:../../views/statsCRUD/countries_last_stats_view/countries_last_stats_view.php');
+        header('Location:../../views/statsCRUD/countries_view_last_stats/countries_view_last_stats.php');
     }
     catch(Exception $e){
         Configs::displayErrorMessage($e);

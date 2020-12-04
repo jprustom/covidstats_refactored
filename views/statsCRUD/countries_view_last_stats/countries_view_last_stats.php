@@ -4,7 +4,7 @@
     <?php Configs::generateHead('Last Stats','../../shared/images/icon.png',[
         "../../shared/main.css",
         "../../shared/navbar.css",
-        "countries_last_stats_view.css"
+        "countries_view_last_stats.css"
     ],[
         "homeLink"=>"",
         "statsLink"=>"../../statsCRUD/statsCRUD.php",
@@ -13,7 +13,7 @@
         "signOutLink"=>"../../../controllers/admin/signOut.php",
         "changePassLink"=>"../../admin/changePass.php"
     ]) ?>
-    <?php include_once('../../../controllers/statsCRUD/countries_last_stats_view.php');?>
+    <?php require_once('../../../controllers/statsCRUD/countries_view_last_stats.php');?>
     <body>
     <h1>Latest Covid Stats</h1>
         <section id="covidstats-table">
