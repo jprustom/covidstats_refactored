@@ -7,6 +7,6 @@
 ?>
 <?php
     $countryId=$_GET['countryId'];
-    $countryStats=CovidStats::fetchCountryStats((int)($countryId));
+    $countryStats=\Models\CovidStats::fetchCountryStats((int)($countryId));
 
 ?>

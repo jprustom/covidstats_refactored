@@ -6,11 +6,11 @@
         $countryName=$_GET['countryName'];
         $countryFlagFileName=$_GET['countryFlagFileName'];
         $countryFlagImagePath="../../shared/images/countriesFlags/$countryFlagFileName";
-        $countryStats=CovidStats::fetchCountryStats((int)($countryId));
+        $countryStats=\Models\CovidStats::fetchCountryStats((int)($countryId));
         
     }
     catch(Exception $e){
-        Configs::displayErrorMessage($e);
+        \Library\Configs::displayErrorMessage($e);
     }
 
 

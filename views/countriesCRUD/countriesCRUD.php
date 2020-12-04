@@ -1,7 +1,8 @@
 <?php require_once('../../bootstrap.php'); ?>
+
 <?php if (!$_SESSION['user'])
     header('Location:../admin/signIn.php');?>
-<?php Configs::generateHead('Countries','../shared/images/icon.png',[
+<?php \Library\Configs::generateHead('Countries','../shared/images/icon.png',[
     "../shared/main.css",
     "../shared/navbar.css",
     "countriesCRUD.css"

@@ -1,7 +1,7 @@
 <?php require_once('../../bootstrap.php');?>
 <?php if (!$_SESSION['user'])
         header('Location:../../views/admin/signIn.php');?>
-<?php Configs::generateHead('Error!','../../views/shared/images/icon.png',[
+<?php \Library\Configs::generateHead('Error!','../../views/shared/images/icon.png',[
         "../../views/shared/main.css",
         "../../views/shared/navbar.css",
     ],[
@@ -27,13 +27,13 @@
         $countryFlagName=uniqid().'_'.$_FILES['countryFlag']['name']; //For eg 5fb0387973385_france.png
 
         //1-Check if country exists
-        if (Countries::getCountryId($countryName)){
+        if (\Models\Countries::getCountryId($countryName)){
             $countryName=ucwords($countryName);
             throw new Exception("$countryName already exists in our solution.");
         }
 
         //2-Add new country
-        (Countries::insertIntoCountries($countryName,$countryFlagName));
+        (\Models\Countries::insertIntoCountries($countryName,$countryFlagName));
         $countryFlagTempName=$_FILES['countryFlag']['tmp_name'];
         move_uploaded_file($countryFlagTempName,'../../views/shared/images/countriesFlags/'.$countryFlagName);
         
@@ -41,6 +41,6 @@
         header('Location: ../../views/statsCRUD/countries_view_last_stats/countries_view_last_stats.php');
     }
     catch(Exception $e){
-        Configs::displayErrorMessage($e);
+        \Library\Configs::displayErrorMessage($e);
     }
 ?>

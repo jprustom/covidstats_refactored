@@ -1,7 +1,7 @@
 <?php require_once('../../bootstrap.php');?>
 <?php if (!$_SESSION['user'])
         header('Location:../../views/admin/signIn.php');?>
-<?php Configs::generateHead('Error!','../../views/shared/images/icon.png',[
+<?php \Library\Configs::generateHead('Error!','../../views/shared/images/icon.png',[
         "../../views/shared/main.css",
         "../../views/shared/navbar.css",
     ],[
@@ -28,7 +28,7 @@
         $newCountryFlag=$_FILES['newCountryFlag'];
         $newCountryFlagFileName=$newCountryFlag['name'];
         $isNewCountryFlagProvided=trim($newCountryFlag['name'])!=='';
-        Countries::updateCountry($countryId,$countryName,$isNewCountryFlagProvided?$newCountryFlagFileName:$initialCountryFlagFileName);
+        \Models\Countries::updateCountry($countryId,$countryName,$isNewCountryFlagProvided?$newCountryFlagFileName:$initialCountryFlagFileName);
         if ($isNewCountryFlagProvided){
             unlink("../../views/shared/images/countriesFlags/$initialCountryFlagFileName");
             $newCountryFlagFileName=uniqid().'_'.$newCountryFlagFileName;
@@ -38,7 +38,7 @@
         header('Location:../../views/countriesCRUD/countriesCRUD.php');
     }
     catch(Exception $e){
-        Configs::displayErrorMessage($e);
+        \Library\Configs::displayErrorMessage($e);
     }
     
 

@@ -1,7 +1,7 @@
 <?php require_once('../../bootstrap.php');?>
 <?php if (!$_SESSION['user'])
         header('Location:../../views/admin/signIn.php');?>
-<?php Configs::generateHead('Error!','../../views/shared/images/icon.png',[
+<?php \Library\Configs::generateHead('Error!','../../views/shared/images/icon.png',[
         "../../views/shared/main.css",
         "../../views/shared/navbar.css",
     ],[
@@ -22,11 +22,11 @@
         $countryFlagFileName=$_GET['countryFlagFileName'];
         if ($countryId===0)
             throw new Exception('Invalid countryId');
-        Countries::deleteCountry($countryId);
+        \Models\Countries::deleteCountry($countryId);
         unlink('../../views/shared/images/countriesFlags/$countryFlagFileName');
         header('Location:../../views/countriesCRUD/countriesCRUD.php');
     }
     catch(Exception $e){
-        Configs::displayErrorMessage($e);
+        \Library\Configs::displayErrorMessage($e);
     }
 ?>

@@ -2,7 +2,7 @@
 <?php require_once('../../bootstrap.php');?>
 <?php if ($_SESSION['user'])
     header('Location:../statsCRUD/statsCRUD.php');?>
-<?php Configs::generateHead('Sign In','../shared/images/icon.png',[
+<?php \Library\Configs::generateHead('Sign In','../shared/images/icon.png',[
         "../shared/main.css",
         "../shared/navbar.css",
         "admin.css"

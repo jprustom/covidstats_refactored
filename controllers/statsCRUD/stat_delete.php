@@ -1,7 +1,7 @@
 <?php require_once('../../bootstrap.php');?>
 <?php if (!$_SESSION['user'])
         header('Location:../../views/admin/signIn.php');?>
-<?php Configs::generateHead('Error!','../../views/shared/images/icon.png',[
+<?php \Library\Configs::generateHead('Error!','../../views/shared/images/icon.png',[
         "../../views/shared/main.css",
         "../../views/shared/navbar.css",
     ],[
@@ -24,10 +24,10 @@
         $countryId=(int)($_GET['countryId']);
         if ($countryId==0)
             throw new Exception('invalid country id');
-        CovidStats::deleteStat($statId);
+        \Models\CovidStats::deleteStat($statId);
         header("Location:../../views/statsCRUD/statsCRUD.php?countryId=$countryId");
     }
     catch(Exception $e){
-        Configs::displayErrorMessage($e);
+        \Library\Configs::displayErrorMessage($e);
     }
 ?>

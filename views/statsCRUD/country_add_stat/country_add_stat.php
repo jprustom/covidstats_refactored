@@ -1,7 +1,7 @@
 <?php require_once('../../../bootstrap.php'); ?>
 <?php if (!$_SESSION['user'])
         header('Location:../../admin/signIn.php');?>
-<?php Configs::generateHead('Add Stats','../../shared/images/icon.png',[
+<?php \Library\Configs::generateHead('Add Stats','../../shared/images/icon.png',[
         "../../shared/main.css",
         "../../shared/navbar.css",
         "country_add_stat.css"
@@ -11,7 +11,7 @@
         "countriesLink"=>"../../countriesCRUD/countriesCRUD.php",
         "signInLink"=>"../../admin/signIn.php",
         "signOutLink"=>"../../../controllers/admin/signOut.php",
-        "changePassLink"=>"../admin/changePass.php"
+        "changePassLink"=>"../../admin/changePass.php"
     ]) ?>
 <?php require_once('../../../controllers/countriesCRUD/countries_get.php');?>
 <body>
@@ -25,13 +25,14 @@
         </div>
         <div id='country'>
             <label for='country'>Country:</label>
-            <select required name='country'>
+            <select required name='countryId'>
                 <?php
                     foreach($countries as $countryObj){
-                        $countryName=$countryObj->name;
+                        $countryId=$countryObj->id;
+                        $selected=$countryId===$_GET['countryId']?"selected='selected'":"";
                         $countryName=ucwords($countryObj->countryName) ;
                         print("
-                            <option value='$countryName'>
+                            <option $selected value='$countryId'>
                                 $countryName 
                             </option>
                         ");

@@ -5,7 +5,7 @@
     $statId=(int)($_GET['statId']);
     if ($statId==0)
         throw new Exception('invalid stat id');
-    $stat=CovidStats::getStat($statId);
+    $stat=\Models\CovidStats::getStat($statId);
     $initialStatDate=$stat->date;
     $initialStatDate = date("d-M-Y", strtotime($initialStatDate));  
     $initialStatCases=$stat->lastCases;

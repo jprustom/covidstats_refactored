@@ -1,5 +1,5 @@
 <?php require_once('../../bootstrap.php');?>
-<?php Configs::generateHead('Error!','../../views/shared/images/icon.png',[
+<?php \Library\Configs::generateHead('Error!','../../views/shared/images/icon.png',[
         "../../views/shared/main.css",
         "../../views/shared/navbar.css",
     ],[
@@ -21,7 +21,7 @@
         if (!filter_var($email, FILTER_VALIDATE_EMAIL))
             throw new Exception('not a valid email format.');
 
-        User::loginUser($email,$password);
+        \Models\User::loginUser($email,$password);
         $_SESSION['user']=[
             "email"=>$email,
             "password"=>sha1($password)
@@ -29,7 +29,7 @@
         header('Location:../../views/statsCRUD/countries_view_last_stats/countries_view_last_stats.php');
     }
     catch(Exception $e){
-        Configs::displayErrorMessage($e);
+        \Library\Configs::displayErrorMessage($e);
     }
 
 ?>

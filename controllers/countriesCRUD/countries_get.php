@@ -3,11 +3,11 @@
         header('Location:../../views/admin/signIn.php');?>
 <?php
     try{
-        $countries=Countries::fetchAllCountries();
+        $countries=\Models\Countries::fetchAllCountries();
         if (empty($countries))
             throw new Exception('no countries in database');
     }
     catch(Exception $e){
-        Configs::displayErrorMessage($e);
+        \Library\Configs::displayErrorMessage($e);
     }
 ?>

@@ -1,7 +1,7 @@
 <?php require_once('../../../bootstrap.php'); ?>
 <?php if (!$_SESSION['user'])
     header('Location:../../admin/signIn.php');?>
-<?php Configs::generateHead('Edit Stat','../../shared/images/icon.png',[
+<?php \Library\Configs::generateHead('Edit Stat','../../shared/images/icon.png',[
     "../../shared/main.css",
     "../../shared/navbar.css",
     "./stat_edit.css"

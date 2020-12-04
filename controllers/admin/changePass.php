@@ -1,5 +1,5 @@
 <?php require_once('../../bootstrap.php');?>
-<?php Configs::generateHead('Error!','../../views/shared/images/icon.png',[
+<?php \Library\Configs::generateHead('Error!','../../views/shared/images/icon.png',[
         "../../views/shared/main.css",
         "../../views/shared/navbar.css",
     ],[
@@ -32,7 +32,7 @@
         $confirmNewPassword=$_POST['confirmNewPassword'];
         if ($newPassword!==$confirmNewPassword)
             throw new Exception('Passwords Do Not Match');
-        User::updateUserPassword($email,$newPassword);
+        \Models\User::updateUserPassword($email,$newPassword);
         $_SESSION['user']=[
             "email"=>$email,
             "password"=>sha1($newPassword)
@@ -40,7 +40,7 @@
         header('Location:../../views/statsCRUD/countries_view_last_stats/countries_view_last_stats.php');
     }
     catch(Exception $e){
-        Configs::displayErrorMessage($e);
+        \Library\Configs::displayErrorMessage($e);
     }
 
 ?>

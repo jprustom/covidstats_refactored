@@ -5,12 +5,12 @@
         $countryId=(int)$_GET['countryId'];
         if ($countryId==0)
             throw new Exception('invalid country Id');
-        $country=Countries::getCountry($countryId);
+        $country=\Models\Countries::getCountry($countryId);
         $countryName=$country->countryName;
         $countryFlagFileName=$country->countryFlagFilename;
     }
     catch(Exception $e){
-        Configs::displayErrorMessage($e);
+        \Library\Configs::displayErrorMessage($e);
     }
 
 ?>

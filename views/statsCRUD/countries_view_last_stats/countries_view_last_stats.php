@@ -1,7 +1,7 @@
 
 <html>
     <?php require_once("../../../bootstrap.php") ?>
-    <?php Configs::generateHead('Last Stats','../../shared/images/icon.png',[
+    <?php \Library\Configs::generateHead('Last Stats','../../shared/images/icon.png',[
         "../../shared/main.css",
         "../../shared/navbar.css",
         "countries_view_last_stats.css"

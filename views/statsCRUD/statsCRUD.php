@@ -1,7 +1,7 @@
 <?php require_once('../../bootstrap.php'); ?>
 <?php if (!$_SESSION['user'])
     header('Location:../admin/signIn.php');?>
-<?php Configs::generateHead('Stats','../shared/images/icon.png',[
+<?php \Library\Configs::generateHead('Stats','../shared/images/icon.png',[
     "../shared/main.css",
     "../shared/navbar.css",
     "statsCRUD.css"
@@ -16,7 +16,7 @@
 
 <?php require_once('../../controllers/countriesCRUD/country_get_stats.php');?>
 <body>
-    <a id="addStat" href='country_add_stat/country_add_stat.php'>Add Stats</a>
+    <a id="addStat" href='<?php echo("country_add_stat/country_add_stat.php?countryId=$countryId")?>'>Add Stats</a>
     <div id='selectCountry'>
         <label for='country'>Country:</label>
         <select required name='country'>

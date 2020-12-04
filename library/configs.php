@@ -1,4 +1,4 @@
-<?php 
+<?php namespace Library;
     class Configs{
         public static $coronastats_db_config=[
             "host"=>'localhost',
@@ -26,8 +26,8 @@
                             <section id='navbar'>
                                 <img src=$navbarIconPath />
                                 <nav id='links'>
-                                    <a id='home' href=$signOutLink>Sign Out</a>
-                                    <a id='home' href=$changePassLink>Change Password</a>
+                                    <a href=$signOutLink>Sign Out</a>
+                                    <a href=$changePassLink>Change Password</a>
                                     <a id='home' href=$homeLink>Last Stats</a>
                                     <a href=$statsLink>Stats</a>
                                     <a href=$countriesLink>Countries</a>
@@ -71,7 +71,7 @@
                 $navbar
             ");
         }
-        public static function displayErrorMessage(Exception $e){
+        public static function displayErrorMessage(\Exception $e){
             $messageToDisplay=$e->getMessage();
             print_r("<h1>$messageToDisplay</h1>");
             die();

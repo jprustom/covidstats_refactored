@@ -2,7 +2,7 @@
 <?php require_once('../../bootstrap.php');?>
 <?php if (!$_SESSION['user'])
     header('Location:../../admin/signIn.php');?>
-<?php Configs::generateHead('Error!','../../views/shared/images/icon.png',[
+<?php \Library\Configs::generateHead('Error!','../../views/shared/images/icon.png',[
         "../../views/shared/main.css",
         "../../views/shared/navbar.css",
     ],[
@@ -35,7 +35,7 @@
         //In my database class I will check with my PDO the int types
         $new_cases=(int)($_POST['newCases']);
         $new_deaths=(int)($_POST['newDeaths']);
-        CovidStats::updateStat($statId,[
+        \Models\CovidStats::updateStat($statId,[
             "countryId"=>$countryId,
             "date"=>$date,
             "lastCases"=>$new_cases,
@@ -45,7 +45,7 @@
         header("Location: ../../views/statsCRUD/statsCRUD.php?countryId=$countryId");
     }
     catch(Exception $e){
-        Configs::displayErrorMessage($e);
+        \Library\Configs::displayErrorMessage($e);
     }
 
 ?>

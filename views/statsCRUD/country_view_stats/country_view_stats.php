@@ -1,6 +1,6 @@
 <?php require_once('../../../bootstrap.php'); ?>
 
-<?php Configs::generateHead('Details','../../shared/images/icon.png',[
+<?php \Library\Configs::generateHead('Details','../../shared/images/icon.png',[
         "../../shared/main.css",
         "../../shared/navbar.css",
         "country_view_stats.css"
