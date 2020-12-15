@@ -11,6 +11,7 @@
     "statsLink"=>"../statsCRUD/statsCRUD.php",
     "countriesLink"=>"",
     "signInLink"=>"../admin/signIn.php",
+    "memberSignUpLink"=>"../admin/signUp.php",
     "signOutLink"=>"../../controllers/admin/signOut.php",
     "changePassLink"=>"../admin/changePass.php"
 ]) ?>

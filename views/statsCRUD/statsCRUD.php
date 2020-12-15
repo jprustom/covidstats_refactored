@@ -10,6 +10,7 @@
     "statsLink"=>"statsCRUD.php",
     "countriesLink"=>"../countriesCRUD/countriesCRUD.php",
     "signInLink"=>"../admin/signIn.php",
+    "memberSignUpLink"=>"../admin/signUp.php",
     "signOutLink"=>"../../controllers/admin/signOut.php",
     "changePassLink"=>"../admin/changePass.php"
 ]) ?>

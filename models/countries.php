@@ -55,7 +55,7 @@
             $pdoStatementInsertIntoCountries=$dbh->prepare($sqlStatementInsertIntoCountries);
             $pdoStatementInsertIntoCountries->bindValue('countryName',$countryName,\PDO::PARAM_STR);
             $pdoStatementInsertIntoCountries->bindValue('countryFlagFileName',$countryFlagFileName,\PDO::PARAM_STR);
-            if(!$pdoStatementInsertIntoCountries->execute()){; //returns false if execution fails, error is also printed
+            if(!$pdoStatementInsertIntoCountries->execute()){ //returns false if execution fails, error is also printed
                 throw new \Exception('Something went wrong when adding new country');
             }
         }

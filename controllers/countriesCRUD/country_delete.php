@@ -9,6 +9,7 @@
         "statsLink"=>"../../views/statsCRUD.php",
         "countriesLink"=>"../../views/countriesCRUD/countriesCRUD.php",
         "signInLink"=>"../../views/admin/signIn.php",
+        "memberSignUpLink"=>"../../views/admin/signUp.php",
         "signOutLink"=>"../admin/signout.php",
         "changePassLink"=>"../../views/admin/changePass.php"
     ]) ?>

@@ -9,6 +9,7 @@
                 $password=\Library\Configs::$coronastats_db_config['password'];
                 $dsn="mysql:host=$host;dbname=$dbname";
                 self::$dbh=new \PDO($dsn,$username,$password,[]);
+                
             }
             return self::$dbh;
         }

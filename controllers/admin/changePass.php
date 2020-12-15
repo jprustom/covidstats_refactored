@@ -7,6 +7,7 @@
         "statsLink"=>"../views/statsCRUD.php",
         "countriesLink"=>"../views/countriesCRUD/countriesCRUD.php",
         "signInLink"=>"../../views/admin/signIn.php",
+        "memberSignUpLink"=>"../../views/admin/signUp.php",
         "signOutLink"=>"signout.php",
         "changePassLink"=>"../../views/admin/changePass.php"
     ]) ?>
@@ -32,11 +33,9 @@
         $confirmNewPassword=$_POST['confirmNewPassword'];
         if ($newPassword!==$confirmNewPassword)
             throw new Exception('Passwords Do Not Match');
-        \Models\User::updateUserPassword($email,$newPassword);
-        $_SESSION['user']=[
-            "email"=>$email,
-            "password"=>sha1($newPassword)
-        ];
+        $user=\Models\User::updateUserPassword($email,$newPassword);
+        $_SESSION['user']['email']=$email;
+        $_SESSION['user']['password']=sha1($newPassword);
         header('Location:../../views/statsCRUD/countries_view_last_stats/countries_view_last_stats.php');
     }
     catch(Exception $e){

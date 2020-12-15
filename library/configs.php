@@ -12,40 +12,60 @@
             $countriesLink=$navbarLinks['countriesLink'];
             $signInLink=$navbarLinks['signInLink'];
             $signOutLink=$navbarLinks['signOutLink'];
+            $memberSignUpLink=$navbarLinks['memberSignUpLink'];
             $changePassLink=$navbarLinks['changePassLink'];
+            
             $imageClick="<script>
                             document.querySelector('#navbar>img').addEventListener('click',()=>{
                                 document.getElementById('home').click();
                             });
                         </script>
                         ";
-            return
-                isset($_SESSION['user'])
-                    ?(
-                        "   
-                            <section id='navbar'>
-                                <img src=$navbarIconPath />
-                                <nav id='links'>
-                                    <a href=$signOutLink>Sign Out</a>
-                                    <a href=$changePassLink>Change Password</a>
-                                    <a id='home' href=$homeLink>Last Stats</a>
-                                    <a href=$statsLink>Stats</a>
-                                    <a href=$countriesLink>Countries</a>
-                                </nav>
-                            </section>
-                            $imageClick
-                        "
-                    )
-                    :("
+            
+            if (isset($_SESSION['user']))
+                if ($_SESSION['user']['isAdmin'])
+                        return ( //If Admin
+                            "   
+                                <section id='navbar'>
+                                    <img src=$navbarIconPath />
+                                    <nav id='links'>
+                                        <a href=$signOutLink>Sign Out</a>
+                                        <a href=$changePassLink>Change Password</a>
+                                        <a id='home' href=$homeLink>Last Stats</a>
+                                        <a href=$statsLink>Stats</a>
+                                        <a href=$countriesLink>Countries</a>
+                                    </nav>
+                                </section>
+                                $imageClick
+                            "
+                        );
+                else return ( //If Member
+                    "   
                         <section id='navbar'>
                             <img src=$navbarIconPath />
                             <nav id='links'>
+                                <a href=$signOutLink>Sign Out</a>
+                                <a href=$changePassLink>Change Password</a>
                                 <a id='home' href=$homeLink>Last Stats</a>
-                                <a href=$signInLink>Admin</a>
+                                <a href=$statsLink>Stats</a>
                             </nav>
                         </section>
                         $imageClick
-                    ");
+                    "
+                );
+            return //If Signed Out
+                "
+                <section id='navbar'>
+                    <img src=$navbarIconPath />
+                    <nav id='links'>
+                        <a id='home' href=$homeLink>Last Stats</a>
+                        <a href=$signInLink>Sign In</a>
+                        <a href=$memberSignUpLink>Sign Up</a>
+
+                    </nav>
+                </section>
+                $imageClick
+            ";
         }
         private static function generateStylesheets(array $stylesheetsPaths){
             $styleSheetsToReturn='';
