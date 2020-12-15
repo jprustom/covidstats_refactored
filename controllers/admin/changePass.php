@@ -33,9 +33,9 @@
         $confirmNewPassword=$_POST['confirmNewPassword'];
         if ($newPassword!==$confirmNewPassword)
             throw new Exception('Passwords Do Not Match');
-        $user=\Models\User::updateUserPassword($email,$newPassword);
-        $_SESSION['user']['email']=$email;
-        $_SESSION['user']['password']=sha1($newPassword);
+        \Models\User::updateUserPassword($email,$newPassword);
+        $user->password=sha1($newPassword);
+        $_SESSION['user']=$user;
         header('Location:../../views/statsCRUD/countries_view_last_stats/countries_view_last_stats.php');
     }
     catch(Exception $e){

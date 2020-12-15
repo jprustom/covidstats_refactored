@@ -26,7 +26,7 @@ a#addStat:hover,
 
 .statsCRUD-table__header{
     float:left;
-    width:20%;
+    /* width:25%; */
     height:10vh;
     border:1px solid rgb(47, 47, 255);
     font-size:.8rem;
@@ -40,11 +40,19 @@ a#addStat:hover,
     border:1.4px solid blue;
     line-height:10vh;
 }
+.statsCRUD-table__header.five-columns,
+.statsCRUD-table__entry.five-columns>div{
+    width:20%;
+}
+.statsCRUD-table__header.four-columns,
+.statsCRUD-table__entry.four-columns>div{
+    width:25%;
+}
 .statsCRUD-table__entry>div{
     vertical-align: middle;
     text-align:center;
     float:left;
-    width:20%;
+    /* width:25%; */
     height:20vh;
     color:#4444ff;
     line-height: 20vh;

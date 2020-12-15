@@ -22,8 +22,9 @@
                         </script>
                         ";
             
-            if (isset($_SESSION['user']))
-                if ($_SESSION['user']['isAdmin'])
+            if (isset($_SESSION['user'])){
+                $user=$_SESSION['user'];
+                if ($user->isAdmin)
                         return ( //If Admin
                             "   
                                 <section id='navbar'>
@@ -39,20 +40,26 @@
                                 $imageClick
                             "
                         );
-                else return ( //If Member
-                    "   
-                        <section id='navbar'>
-                            <img src=$navbarIconPath />
-                            <nav id='links'>
-                                <a href=$signOutLink>Sign Out</a>
-                                <a href=$changePassLink>Change Password</a>
-                                <a id='home' href=$homeLink>Last Stats</a>
-                                <a href=$statsLink>Stats</a>
-                            </nav>
-                        </section>
-                        $imageClick
-                    "
-                );
+                else {
+                    $isMemberAccepted=$user->isAccepted;
+                    $statsAnchorTag=$isMemberAccepted
+                        ?"<a href=$statsLink>Stats</a>"
+                        :null;
+                    return  //If Member
+                        "   
+                            <section id='navbar'>
+                                <img src=$navbarIconPath />
+                                <nav id='links'>
+                                    <a href=$signOutLink>Sign Out</a>
+                                    <a href=$changePassLink>Change Password</a>
+                                    <a id='home' href=$homeLink>Last Stats</a>
+                                    $statsAnchorTag
+                                </nav>
+                            </section>
+                            $imageClick
+                        "
+                ;}
+            }
             return //If Signed Out
                 "
                 <section id='navbar'>

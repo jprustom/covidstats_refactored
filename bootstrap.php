@@ -3,9 +3,10 @@
         //1-Check for session validity
         $isLoggedIn=isset($_SESSION['user']);
         if ($isLoggedIn){
-                $isMember=$_SESSION['user']['isAdmin']==false;
+                $user=$_SESSION['user'];
+                $isMember=$user->isAdmin==false;
                 if (!$isMember && isset($_SESSION['lastActivityTimeStamp'])){
-                        $lastActivityTimeStamp=$SESSION['lastActivityTimeStamp'];
+                        $lastActivityTimeStamp=$_SESSION['lastActivityTimeStamp'];
                         if (time()-$lastActivityTimeStamp>15*60*1000)
                                 $_SESSION['user']=null;
                 }

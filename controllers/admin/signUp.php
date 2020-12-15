@@ -39,11 +39,7 @@
                 $phoneNumber))
                     throw new Exception('invalid phone number format');
         $user=\Models\User::signUpUser($email,$phoneNumber,$password);
-        $_SESSION['user']=[
-            "email"=>$email,
-            "password"=>sha1($password),
-            "isAdmin"=>0 //An admin can NOT be created from UI (by default, I set isAdmin of users table to 0)
-        ];
+        $_SESSION['user']=$user;
         header('Location:../../views/statsCRUD/countries_view_last_stats/countries_view_last_stats.php');
     }
     catch(Exception $e){

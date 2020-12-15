@@ -36,14 +36,27 @@
             ?>
         </select>
         </div>
-    
+    <?php 
+        $user=$_SESSION['user'];
+        $isAdmin=$user->isAdmin;
+        $isAccepted=$user->isAccepted;
+        if (!$isAccepted)
+                header('Location:./countries_view_last_stats/countries_view_last_stats.php');
+    ?>
+    <?php $numberOfColumns=
+            $isAdmin
+                ?'five-columns'
+                :'four-columns'?>
     <section id="statsCRUD-table">
         <div id="statsCRUD-table__headers">
-            <div class="statsCRUD-table__header">Date</div>
-            <div class="statsCRUD-table__header">Cases</div>
-            <div class="statsCRUD-table__header">Deaths</div>
-            <div class="statsCRUD-table__header">Edit</div>
-            <div class="statsCRUD-table__header">Delete</div>
+            <div class="statsCRUD-table__header <?php echo($numberOfColumns) ?>">Date</div>
+            <div class="statsCRUD-table__header <?php echo($numberOfColumns) ?>">Cases</div>
+            <div class="statsCRUD-table__header <?php echo($numberOfColumns) ?>">Deaths</div>
+            <div class="statsCRUD-table__header <?php echo($numberOfColumns) ?>">Edit<?php if ($isAdmin) echo("/Delete"); ?></div>
+            <?php 
+                if ($isAdmin)
+                    echo("<div statsCRUD-table__header $numberOfColumns>Member</div>")
+            ?>
         </div>
         <div id="covidstats-table__entries">
             <?php
@@ -59,14 +72,22 @@
                         $date=$countryStat->date;
                         $cases=$countryStat->lastCases;
                         $deaths=$countryStat->lastDeaths;
+                        if ($isAdmin){
+                            $deleteStatEntry="/<a href='../../controllers/statsCRUD/stat_delete.php?statId=$statId&countryId=$countryId'>Delete</a>";
+                            $memberEmailEntry="<div>TEST</div>";
+                        }
+                        else {
+                            $deleteStatEntry=null;
+                            $memberEmailEntry=null;
+                        }
                         print("
-                        <div class='statsCRUD-table__entry'>
-                            <div class='statsCRUD-table__entry'>$date</div>
-                            <div class='statsCRUD-table__entry'>$cases</div>
-                            <div class='statsCRUD-table__entry'>$deaths</div>
-                            <div class='statsCRUD-table__entry'><a href='stat_edit/stat_edit.php?statId=$statId'>Edit</a></div>
-                            <div class='statsCRUD-table__entry'><a href='../../controllers/statsCRUD/stat_delete.php?statId=$statId&countryId=$countryId'>Delete</a></div>
-                        </div>
+                            <div class='statsCRUD-table__entry $numberOfColumns'>
+                                <div class='statsCRUD-table__entry '>$date</div>
+                                <div class='statsCRUD-table__entry'>$cases</div>
+                                <div class='statsCRUD-table__entry'>$deaths</div>
+                                <div class='statsCRUD-table__entry'><a href='stat_edit/stat_edit.php?statId=$statId'>Edit</a>$deleteStatEntry</div>
+                                $memberEmailEntry
+                            </div>
                         ");
                     }
                 }

@@ -23,11 +23,7 @@
             throw new Exception('not a valid email format.');
 
         $user=\Models\User::loginUser($email,$password);
-        $_SESSION['user']=[
-            "email"=>$email,
-            "password"=>sha1($password),
-            "isAdmin"=>$user->isAdmin
-        ];
+        $_SESSION['user']=$user;
         header('Location:../../views/statsCRUD/countries_view_last_stats/countries_view_last_stats.php');
     }
     catch(Exception $e){
