@@ -1,6 +1,6 @@
 <?php require_once('../../bootstrap.php'); ?>
 <?php if (!$_SESSION['user'])
-    header('Location:../admin/signIn.php');?>
+    header('Location:../auth/signIn.php');?>
 <?php \Library\Configs::generateHead('Stats','../shared/images/icon.png',[
     "../shared/main.css",
     "../shared/navbar.css",
@@ -9,10 +9,11 @@
     "homeLink"=>"countries_view_last_stats/countries_view_last_stats.php",
     "statsLink"=>"statsCRUD.php",
     "countriesLink"=>"../countriesCRUD/countriesCRUD.php",
-    "signInLink"=>"../admin/signIn.php",
-    "memberSignUpLink"=>"../admin/signUp.php",
-    "signOutLink"=>"../../controllers/admin/signOut.php",
-    "changePassLink"=>"../admin/changePass.php"
+    "signInLink"=>"../auth/signIn.php",
+    "memberSignUpLink"=>"../auth/signUp.php",
+    "signOutLink"=>"../../controllers/auth/signOut.php",
+    "editProfileLink"=>"../auth/editProfile.php",
+    "pending"=>"../pending/pending.php"
 ]) ?>
 
 <?php require_once('../../controllers/countriesCRUD/country_get_stats.php');?>
@@ -55,7 +56,7 @@
             <div class="statsCRUD-table__header <?php echo($numberOfColumns) ?>">Edit<?php if ($isAdmin) echo("/Delete"); ?></div>
             <?php 
                 if ($isAdmin)
-                    echo("<div statsCRUD-table__header $numberOfColumns>Member</div>")
+                    echo("<div class='statsCRUD-table__header $numberOfColumns'>Posted By User</div>")
             ?>
         </div>
         <div id="covidstats-table__entries">
@@ -72,21 +73,22 @@
                         $date=$countryStat->date;
                         $cases=$countryStat->lastCases;
                         $deaths=$countryStat->lastDeaths;
+                        $username=\Models\User::getUsername($countryStat->userId);
                         if ($isAdmin){
                             $deleteStatEntry="/<a href='../../controllers/statsCRUD/stat_delete.php?statId=$statId&countryId=$countryId'>Delete</a>";
-                            $memberEmailEntry="<div>TEST</div>";
+                            $usernameEntry="<div>$username</div>";
                         }
                         else {
                             $deleteStatEntry=null;
-                            $memberEmailEntry=null;
+                            $usernameEntry=null;
                         }
                         print("
                             <div class='statsCRUD-table__entry $numberOfColumns'>
-                                <div class='statsCRUD-table__entry '>$date</div>
-                                <div class='statsCRUD-table__entry'>$cases</div>
-                                <div class='statsCRUD-table__entry'>$deaths</div>
-                                <div class='statsCRUD-table__entry'><a href='stat_edit/stat_edit.php?statId=$statId'>Edit</a>$deleteStatEntry</div>
-                                $memberEmailEntry
+                                <div>$date</div>
+                                <div>$cases</div>
+                                <div>$deaths</div>
+                                <div><a href='stat_edit/stat_edit.php?statId=$statId'>Edit</a>$deleteStatEntry</div>
+                                $usernameEntry
                             </div>
                         ");
                     }

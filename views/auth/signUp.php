@@ -5,21 +5,24 @@
 <?php \Library\Configs::generateHead('Sign Up','../shared/images/icon.png',[
         "../shared/main.css",
         "../shared/navbar.css",
-        "admin.css"
+        "auth.css"
     ],[
         "homeLink"=>"../statsCRUD/countries_view_last_stats/countries_view_last_stats.php",
         "statsLink"=>"../statsCRUD/statsCRUD.php",
         "countriesLink"=>"../countriesCRUD/countriesCRUD.php",
         "signInLink"=>"signIn.php",
         "memberSignUpLink"=>"",
-        "signOutLink"=>"../../controllers/admin/signOut.php",
-        "changePassLink"=>"../../controllers/admin/changePass.php"
+        "signOutLink"=>"../../controllers/auth/signOut.php",
+        "editProfileLink"=>"../../controllers/auth/editProfile.php",
+        "pending"=>"../pending/pending.php"
     ]) ?>
 <body>
     <h1>Sign Up</h1>
-    <form method="post" action="../../controllers/admin/signUp.php">
+    <form method="post" action="../../controllers/auth/signUp.php">
+        <label required for="username">Username</label>
+        <input type="text" placeholder="superman.62" name="username"/>
         <label required for="email">Email</label>
-        <input type="email" placeholder="example@example.com" name="email"/>
+        <input type="email" placeholder="superman@superman.com" name="email"/>
         <label for="phoneNumber">Phone Number</label>
         <input required 
             placeholder="+96112345678"

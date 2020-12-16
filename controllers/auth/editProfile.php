@@ -6,18 +6,22 @@
         "homeLink"=>"../../views/statsCRUD/countries_view_last_stats/countries_view_last_stats.php",
         "statsLink"=>"../views/statsCRUD.php",
         "countriesLink"=>"../views/countriesCRUD/countriesCRUD.php",
-        "signInLink"=>"../../views/admin/signIn.php",
-        "memberSignUpLink"=>"../../views/admin/signUp.php",
+        "signInLink"=>"../../views/auth/signIn.php",
+        "memberSignUpLink"=>"../../views/auth/signUp.php",
         "signOutLink"=>"signout.php",
-        "changePassLink"=>"../../views/admin/changePass.php"
+        "editProfileLink"=>"../../views/auth/editProfile.php",
+        "pending"=>"../../views/pending/pending.php"
     ]) ?>
 <?php
     try{
         if (!isset($_SESSION['user']))
-            return header('Location:../../views/admin/signIn.php');
+            return header('Location:../../views/auth/signIn.php');
         $user=$_SESSION['user'];
+        if (!isset($_POST['username']))
+            throw new Exception('no username provided');
+        $username=$_POST['username'];
         if (!isset($user['email']))
-            return header('Location:../../views/admin/signIn.php');
+            return header('Location:../../views/auth/signIn.php');
         $email=$user['email'];
         if (!isset($_POST['oldPassword']))
             throw new Exception('old password was not provided');
@@ -33,7 +37,7 @@
         $confirmNewPassword=$_POST['confirmNewPassword'];
         if ($newPassword!==$confirmNewPassword)
             throw new Exception('Passwords Do Not Match');
-        \Models\User::updateUserPassword($email,$newPassword);
+        \Models\User::updateUser($email,$newPassword,$username);
         $user->password=sha1($newPassword);
         $_SESSION['user']=$user;
         header('Location:../../views/statsCRUD/countries_view_last_stats/countries_view_last_stats.php');

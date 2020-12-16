@@ -1,6 +1,6 @@
 
 <?php if (!$_SESSION['user'])
-        header('Location:../../views/admin/signIn.php');?>
+        header('Location:../../views/auth/signIn.php');?>
 <?php
     try{
         $countries=\Models\Countries::fetchAllCountries();

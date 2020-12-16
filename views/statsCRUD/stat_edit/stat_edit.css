@@ -39,7 +39,7 @@ form#edit-stats>button[type='submit'],
 form#edit-stats>button[type='reset']
 {
     border-radius: 50% 50% 30% 30%;
-    pediting:1.2rem;
+    padding:1.2rem;
     color:#4444ff;
     background:#6a6aff;
     border:none;

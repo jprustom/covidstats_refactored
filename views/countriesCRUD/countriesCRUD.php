@@ -1,7 +1,7 @@
 <?php require_once('../../bootstrap.php'); ?>
 
 <?php if (!$_SESSION['user'])
-    header('Location:../admin/signIn.php');?>
+    header('Location:../auth/signIn.php');?>
 <?php \Library\Configs::generateHead('Countries','../shared/images/icon.png',[
     "../shared/main.css",
     "../shared/navbar.css",
@@ -10,10 +10,11 @@
     "homeLink"=>"../statsCRUD/countries_view_last_stats/countries_view_last_stats.php",
     "statsLink"=>"../statsCRUD/statsCRUD.php",
     "countriesLink"=>"",
-    "signInLink"=>"../admin/signIn.php",
-    "memberSignUpLink"=>"../admin/signUp.php",
-    "signOutLink"=>"../../controllers/admin/signOut.php",
-    "changePassLink"=>"../admin/changePass.php"
+    "signInLink"=>"../auth/signIn.php",
+    "memberSignUpLink"=>"../auth/signUp.php",
+    "signOutLink"=>"../../controllers/auth/signOut.php",
+    "editProfileLink"=>"../auth/editProfile.php",
+    "pending"=>"../pending/pending.php"
 ]) ?>
 <?php require_once('../../controllers/countriesCRUD/countries_get.php');?>
 <a id="addCountry" href='country_add/country_add.php'>Add Country</a>
@@ -35,10 +36,10 @@
                 print("
                     <div class='countriesCRUD-table__entry'>
                         <div class='countriesCRUD-table__entry--country-name'><a href='$detailsPath'>$countryName</a></div>
-                        <div class='countriesCRUD-table__entry'>$countryId</div>
+                        <div>$countryId</div>
                         <div class='countriesCRUD-table__entry--country-flag'><a href='$detailsPath'><img alt='flag' src='../shared/images/countriesFlags/$countryFlagFileName'/></a></div>
-                        <div class='countriesCRUD-table__entry'><a href='../../views/countriesCRUD/country_edit/country_edit.php?countryId=$countryId'>Edit</a></div>
-                        <div class='countriesCRUD-table__entry'><a href='../../controllers/countriesCRUD/country_delete.php?countryId=$countryId&countryFlagFileName=$countryFlagFileName'>Delete</a></div>
+                        <div><a href='../../views/countriesCRUD/country_edit/country_edit.php?countryId=$countryId'>Edit</a></div>
+                        <div><a href='../../controllers/countriesCRUD/country_delete.php?countryId=$countryId&countryFlagFileName=$countryFlagFileName'>Delete</a></div>
                     </div>
                 ");
             };

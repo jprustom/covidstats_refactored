@@ -6,15 +6,18 @@
         "homeLink"=>"../../views/statsCRUD/countries_view_last_stats/countries_view_last_stats.php",
         "statsLink"=>"../views/statsCRUD.php",
         "countriesLink"=>"../views/countriesCRUD/countriesCRUD.php",
-        "signInLink"=>"../../views/admin/signIn.php",
-        "memberSignUpLink"=>"../../views/admin/signUp.php",
+        "signInLink"=>"../../views/auth/signIn.php",
+        "memberSignUpLink"=>"../../views/auth/signUp.php",
         "signOutLink"=>"signout.php",
-        "changePassLink"=>"../../views/admin/changePass.php"
+        "editProfileLink"=>"../../views/auth/editProfile.php",
+        "pending"=>"../../views/pending/pending.php"
     ]) ?>
 <?php
     try{
+        if (!isset($_POST['username']))
+            throw new Exception('username was not set');
         if (!isset($_POST['email']))
-        throw new Exception('email was not provided');
+            throw new Exception('email was not provided');
         if (!isset($_POST['password']))
             throw new Exception('password was not provided');
         if (!isset($_POST['confirmPassword']))
@@ -22,6 +25,7 @@
         if (!isset($_POST['phoneNumber']))
             throw new Exception('telephone number was not provided');
         $email=$_POST['email'];
+        $username=$_POST['username'];
         $password=$_POST['password'];
         if (!preg_match('/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+){8,}$/',$password))
             throw new Exception('password must be at least 8 characters, and alphanumeric');
@@ -38,7 +42,7 @@
                 4[987654310]|3[9643210]|2[70]|7|1)\d{1,14}$/',
                 $phoneNumber))
                     throw new Exception('invalid phone number format');
-        $user=\Models\User::signUpUser($email,$phoneNumber,$password);
+        $user=\Models\User::signUpUser($username,$email,$phoneNumber,$password);
         $_SESSION['user']=$user;
         header('Location:../../views/statsCRUD/countries_view_last_stats/countries_view_last_stats.php');
     }

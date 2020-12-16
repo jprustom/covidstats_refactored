@@ -1,7 +1,7 @@
 <?php date_default_timezone_set ('Asia/Beirut'); ?>
 <?php require_once('../../bootstrap.php');?>
 <?php if (!$_SESSION['user'])
-    header('Location:../../admin/signIn.php');?>
+    header('Location:../../auth/signIn.php');?>
 <?php \Library\Configs::generateHead('Error!','../../views/shared/images/icon.png',[
         "../../views/shared/main.css",
         "../../views/shared/navbar.css",
@@ -9,9 +9,11 @@
         "homeLink"=>"../../views/statsCRUD/countries_view_last_stats/countries_view_last_stats.php",
         "statsLink"=>"../../views/statsCRUD.php",
         "countriesLink"=>"../../views/countriesCRUD/countriesCRUD.php",
-        "signInLink"=>"../../views/admin/signIn.php",
+        "signInLink"=>"../../views/auth/signIn.php",
         "signOutLink"=>"signout.php",
-        "changePassLink"=>"../../views/admin/changePass.php"
+        "editProfileLink"=>"../../views/auth/editProfile.php",
+        "pending"=>"../../views/pending/pending.php",
+        "memberSignUpLink"=>"../../views/auth/signUp.php"
     ]) ?>
 <?php
     try{
@@ -34,7 +36,9 @@
         //In my database class I will check with my PDO the int types
         $new_cases=(int)($_POST['newCases']);
         $new_deaths=(int)($_POST['newDeaths']);
-        \Models\CovidStats::insertNewCoronaStats($countryId,$date,$new_cases,$new_deaths);
+        if ($user->isAdmin)
+            \Models\CovidStats::insertNewCoronaStats($countryId,$date,$new_cases,$new_deaths);
+        else \Models\CovidStats::insertPendingStat($user->id,$new_cases,$new_deaths,null,$date,$countryId);
 
         header("Location: ../../views/statsCRUD/statsCRUD.php?countryId=$countryId");
     }

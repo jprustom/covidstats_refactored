@@ -1,22 +1,25 @@
 <?php require_once('../../bootstrap.php');?>
 <?php if (!$_SESSION['user'])
     header('Location:signIn.php');?>
-<?php \Library\Configs::generateHead('Change Password','../shared/images/icon.png',[
+<?php \Library\Configs::generateHead('Edit Profile','../shared/images/icon.png',[
         "../shared/main.css",
         "../shared/navbar.css",
-        "admin.css"
+        "auth.css"
     ],[
         "homeLink"=>"../statsCRUD/countries_view_last_stats/countries_view_last_stats.php",
         "statsLink"=>"../statsCRUD/statsCRUD.php",
         "countriesLink"=>"../countriesCRUD/countriesCRUD.php",
         "signInLink"=>"signIn.php",
         "memberSignUpLink"=>"signUp.php",
-        "signOutLink"=>"../../controllers/admin/signOut.php",
-        "changePassLink"=>""
+        "signOutLink"=>"../../controllers/auth/signOut.php",
+        "editProfileLink"=>"",
+        "pending"=>"../pending/pending.php"
     ]) ?>
 <body>
-<h1>Change Password </h1>
-    <form method="post" action="../../controllers/admin/changePass.php">
+<h1>Edit Profile </h1>
+    <form method="post" action="../../controllers/auth/editProfile.php">
+        <label for="username">Username</label>
+        <input name="username" type="text" value='<?php echo($user->username)?>'/>
         <label for="oldPassword">Old Password</label>
         <input required  type="password" name="oldPassword"/>
         <label for="newPassword">New Password</label>

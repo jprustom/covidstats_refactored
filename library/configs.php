@@ -2,7 +2,7 @@
     class Configs{
         public static $coronastats_db_config=[
             "host"=>'localhost',
-            "database"=>'coronavirus',
+            "database"=>'coronavirus_refactored',
             "username"=>'root',
             "password"=>''
         ];
@@ -13,8 +13,8 @@
             $signInLink=$navbarLinks['signInLink'];
             $signOutLink=$navbarLinks['signOutLink'];
             $memberSignUpLink=$navbarLinks['memberSignUpLink'];
-            $changePassLink=$navbarLinks['changePassLink'];
-            
+            $editProfileLink=$navbarLinks['editProfileLink'];
+            $pendingLink=$navbarLinks['pending'];
             $imageClick="<script>
                             document.querySelector('#navbar>img').addEventListener('click',()=>{
                                 document.getElementById('home').click();
@@ -31,10 +31,11 @@
                                     <img src=$navbarIconPath />
                                     <nav id='links'>
                                         <a href=$signOutLink>Sign Out</a>
-                                        <a href=$changePassLink>Change Password</a>
+                                        <a href=$editProfileLink>Edit Profile</a>
                                         <a id='home' href=$homeLink>Last Stats</a>
                                         <a href=$statsLink>Stats</a>
                                         <a href=$countriesLink>Countries</a>
+                                        <a href=$pendingLink>Pending</a>
                                     </nav>
                                 </section>
                                 $imageClick
@@ -51,7 +52,7 @@
                                 <img src=$navbarIconPath />
                                 <nav id='links'>
                                     <a href=$signOutLink>Sign Out</a>
-                                    <a href=$changePassLink>Change Password</a>
+                                    <a href=$editProfileLink>Edit Profile</a>
                                     <a id='home' href=$homeLink>Last Stats</a>
                                     $statsAnchorTag
                                 </nav>

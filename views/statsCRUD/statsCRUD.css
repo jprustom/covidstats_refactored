@@ -15,6 +15,7 @@ a#addStat{
 a#addStat:hover,
 .statsCRUD-table__entry>div a:hover
 {
+    cursor: pointer;
     color:white;
     text-transform: uppercase;
     font-size:3.2rem;
@@ -23,6 +24,7 @@ a#addStat:hover,
 .statsCRUD-table__entry>div img:hover{
     transform:scale(1.2);
 }
+
 
 .statsCRUD-table__header{
     float:left;

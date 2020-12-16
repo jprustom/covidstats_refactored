@@ -1,0 +1,84 @@
+.pending-users-table__entries:last-child>div{
+    margin-bottom:10rem;
+}
+#pending-users-table{
+    padding:2rem;
+}
+.pending-stats-table{
+    padding:1rem;
+    margin:auto;
+}
+#pendingAnchorTags{
+    position:fixed;
+    width:100%;
+    background:rgba(176, 237, 255, 0.8);
+    text-align:center;
+}
+a#pendingAnchorTag{
+
+    z-index:1000;
+    text-decoration: none;
+    margin:0 auto;
+    text-align:center;
+    font-size:3rem;
+    
+    /* left:50vw; */
+    /* transform:translateX(-50%); */
+}
+
+a#pendingAnchorTag:hover,
+.pending-users-table__entries>div a:hover,
+.pending-stats-table__entries>div a:hover
+{
+    color:white;
+    text-transform: uppercase;
+    cursor:pointer;
+    text-decoration: underline;
+}
+
+.pending-users-table__header,
+.pending-stats-table__header{
+    float:left;
+    width:25%;
+    height:10vh;
+    border:1px solid rgb(47, 47, 255);
+    vertical-align: middle;
+    text-align:center;
+    font-size: 2rem;
+    font-weight: bolder;
+    z-index:1;
+    background:rgba(0, 247, 255,.5);
+    color:#0000ff;
+    border:1.4px solid blue;
+    line-height:10vh;
+}
+.pending-stats-table__header{
+    width:15%;
+}
+.pending-users-table__entries>div,
+.pending-stats-table__entries>div{
+    vertical-align: middle;
+    text-align:center;
+    float:left;
+    width:25%;
+    height:20vh;
+    color:#4444ff;
+    line-height: 20vh;
+    font-size:2rem;
+    border:1px solid rgb(47, 47, 255);
+}
+.pending-stats-table__entries>div{
+    width:15%;
+}
+.country{
+    width:25% !important; 
+    font-size:2rem !important;
+}
+.pending-users-table__entries:hover>div,
+.pending-stats-table__entries:hover>div{
+    background:rgba(0, 192, 199, 0.5);
+}
+.pending-users-table__entries>.user__email,
+.pending-users-table__header.user__email{
+    width:50%;
+}

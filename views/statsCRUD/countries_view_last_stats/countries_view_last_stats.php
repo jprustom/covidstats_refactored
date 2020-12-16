@@ -9,10 +9,11 @@
         "homeLink"=>"",
         "statsLink"=>"../../statsCRUD/statsCRUD.php",
         "countriesLink"=>"../../countriesCRUD/countriesCRUD.php",
-        "signInLink"=>"../../admin/signIn.php",
-        'memberSignUpLink'=>"../../admin/signUp.php",
-        "signOutLink"=>"../../../controllers/admin/signOut.php",
-        "changePassLink"=>"../../admin/changePass.php"
+        "signInLink"=>"../../auth/signIn.php",
+        'memberSignUpLink'=>"../../auth/signUp.php",
+        "signOutLink"=>"../../../controllers/auth/signOut.php",
+        "editProfileLink"=>"../../auth/editProfile.php",
+        "pending"=>"../../pending/pending.php"
     ]) ?>
     <?php require_once('../../../controllers/statsCRUD/countries_view_last_stats.php');?>
     <body>
@@ -26,22 +27,25 @@
             </div>
             <div id="covidstats-table__entries">
                 <?php 
-                    foreach($covidstats_rows as $covidstat_row){
-                        $countryId=$covidstat_row->countryId;
-                        $countryFlagFileName=$covidstat_row->countryFlagFileName;
-                        $countryName=$covidstat_row->countryName;
-                        $lastCases=$covidstat_row->lastCases;
-                        $lastDeaths=$covidstat_row->lastDeaths;
-                        $detailsPath="../../statsCRUD/country_view_stats/country_view_stats.php?countryId=$countryId&countryName=$countryName&countryFlagFileName=$countryFlagFileName";
-                        print("
-                            <div class='covidstats-table__entry'>
-                                <div class='covidstats-table__entry--country-flag'><a href='$detailsPath'><img alt='$countryName flag' src='../../shared/images/countriesFlags/$countryFlagFileName'/></a></div>
-                                <div class='covidstats-table__entry--country-name'><a href='$detailsPath'>$countryName</a></div>
-                                <div>$lastCases</div>
-                                <div>$lastDeaths</div>
-                            </div>
-                        ");
-                    };
+                    if (count($covidstats_rows)==0)
+                        print("<h1>No stats available</h1>");
+                    else
+                        foreach($covidstats_rows as $covidstat_row){
+                            $countryId=$covidstat_row->countryId;
+                            $countryFlagFileName=$covidstat_row->countryFlagFileName;
+                            $countryName=$covidstat_row->countryName;
+                            $lastCases=$covidstat_row->lastCases;
+                            $lastDeaths=$covidstat_row->lastDeaths;
+                            $detailsPath="../../statsCRUD/country_view_stats/country_view_stats.php?countryId=$countryId&countryName=$countryName&countryFlagFileName=$countryFlagFileName";
+                            print("
+                                <div class='covidstats-table__entry'>
+                                    <div class='covidstats-table__entry--country-flag'><a href='$detailsPath'><img alt='$countryName flag' src='../../shared/images/countriesFlags/$countryFlagFileName'/></a></div>
+                                    <div class='covidstats-table__entry--country-name'><a href='$detailsPath'>$countryName</a></div>
+                                    <div>$lastCases</div>
+                                    <div>$lastDeaths</div>
+                                </div>
+                            ");
+                        };
                 ?>
             </div>
             

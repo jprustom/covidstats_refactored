@@ -1,6 +1,6 @@
 <?php require_once('../../../bootstrap.php'); ?>
 <?php if (!$_SESSION['user'])
-    header('Location:../../admin/signIn.php');?>
+    header('Location:../../auth/signIn.php');?>
 <?php \Library\Configs::generateHead('Edit Country','../../shared/images/icon.png',[
     "../../shared/main.css",
     "../../shared/navbar.css",
@@ -9,10 +9,11 @@
     "homeLink"=>"../../statsCRUD/countries_view_last_stats/countries_view_last_stats.php",
     "statsLink"=>"../../statsCRUD/statsCRUD.php",
     "countriesLink"=>"../countriesCRUD.php",
-    "signInLink"=>"../../admin/signIn.php",
-    "memberSignUpLink"=>"../../admin/signUp.php",
-    "signOutLink"=>"../../../controllers/admin/signOut.php",
-    "changePassLink"=>"../../admin/changePass.php"
+    "signInLink"=>"../../auth/signIn.php",
+    "memberSignUpLink"=>"../../auth/signUp.php",
+    "signOutLink"=>"../../../controllers/auth/signOut.php",
+    "editProfileLink"=>"../../auth/editProfile.php",
+    "pending"=>"../../pending/pending.php"
 ]) ?>
 <?php require_once('../../../controllers/countriesCRUD/country_get.php');?>
 <body>

@@ -8,10 +8,11 @@
     "homeLink"=>"../countries_view_last_stats/countries_view_last_stats.php",
     "statsLink"=>"../../statsCRUD/statsCRUD.php",
     "countriesLink"=>"../../countriesCRUD/countriesCRUD.php",
-    "signInLink"=>"../../../admin/signIn.php",
-    "memberSignUpLink"=>"../../../admin/signUp.php",
-    "signOutLink"=>"../../../controllers/admin/signOut.php",
-    "changePassLink"=>"../../admin/changePass.php"
+    "signInLink"=>"../../../auth/signIn.php",
+    "memberSignUpLink"=>"../../../auth/signUp.php",
+    "signOutLink"=>"../../../controllers/auth/signOut.php",
+    "editProfileLink"=>"../../auth/editProfile.php",
+    "pending"=>"../../pending/pending.php"
 ]) ?>
 <?php include_once('../../../controllers/countriesCRUD /country_view_stats.php'); ?>
 <body>

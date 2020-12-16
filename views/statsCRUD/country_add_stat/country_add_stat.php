@@ -1,6 +1,6 @@
 <?php require_once('../../../bootstrap.php'); ?>
 <?php if (!$_SESSION['user'])
-        header('Location:../../admin/signIn.php');?>
+        header('Location:../../auth/signIn.php');?>
 <?php \Library\Configs::generateHead('Add Stats','../../shared/images/icon.png',[
         "../../shared/main.css",
         "../../shared/navbar.css",
@@ -9,10 +9,11 @@
         "homeLink"=>"../../statsCRUD/countries_view_last_stats/countries_view_last_stats.php",
         "statsLink"=>"",
         "countriesLink"=>"../../countriesCRUD/countriesCRUD.php",
-        "signInLink"=>"../../admin/signIn.php",
-        "memberSignUpLink"=>"../../admin/signUp.php",
-        "signOutLink"=>"../../../controllers/admin/signOut.php",
-        "changePassLink"=>"../../admin/changePass.php"
+        "signInLink"=>"../../auth/signIn.php",
+        "memberSignUpLink"=>"../../auth/signUp.php",
+        "signOutLink"=>"../../../controllers/auth/signOut.php",
+        "editProfileLink"=>"../../auth/editProfile.php",
+        "pending"=>"../../pending/pending.php"
     ]) ?>
 <?php require_once('../../../controllers/countriesCRUD/countries_get.php');?>
 <body>
@@ -49,7 +50,7 @@
             <label for='newDeaths'>Number of new deaths:</label>
             <input name='newDeaths' required min=0 type='number'/>
         </div>
-        <button type='submit'>OK</button>
+        <button type='submit'><?php if ($user->isAdmin) echo("Ok"); else echo("Submit Request");?></button>
     </form>
 </body>
 </html>
