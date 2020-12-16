@@ -16,12 +16,13 @@
     ]) ?>
 <?php
     try{
-        if (isset($_GET['countryId']) && isset($_GET['date']) && isset($_GET['cases']) && isset($_GET['deaths'])){
+        if (isset($_GET['countryId']) && isset($_GET['date']) && isset($_GET['userId']) && isset($_GET['cases']) && isset($_GET['deaths'])){
             $insertNewStatMode=true;
             $countryId=$_GET['countryId'];
-            $date=$_GET['date'];
+            $date=urldecode($_GET['date']);
             $cases=$_GET['cases'];
             $deaths=$_GET['deaths'];
+            $userId=$_GET['userId'];
         }
         if (!isset($_GET['action']))
             throw new Exception('action param was not provided');
@@ -33,8 +34,10 @@
             throw new Exception('invalid user id');
         switch($action){
             case 'approve':
-                if (isset($insertNewStatMode))
-                    \Models\CovidStats::insertNewCoronaStats($countryId,$date,$cases,$deaths);
+                if (isset($insertNewStatMode)){
+                    \Models\CovidStats::insertNewCoronaStats($countryId,$date,$cases,$deaths,$userId);
+                    \Models\CovidStats::deletePendingStat($pendingStatId);
+                }
                 else \Models\CovidStats::approveStat($pendingStatId);
                 break;
             case 'reject':

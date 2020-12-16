@@ -29,18 +29,20 @@
                 throw new \Exception('pending stat was not deleted');
         }
          //Inserting new stats for a specific country
-        public static function insertNewCoronaStats(int $countryId, string $date,int $newCases,int $newDeaths){
+        public static function insertNewCoronaStats(int $countryId, string $date,int $newCases,int $newDeaths,int $userId){
+            // print($countryId."<br/>");print($date."<br/>");print($newCases."<br/>");print($userId);die();
             $dbh=\Library\MySQLDatabase::getMySqlDbh();
             //I could have checked if record with same date exists, and if so update, otherwise insert new row
             self::deletePreviousStats($countryId,$date); //overwrite previous stats for same date
-            $sqlStatementInsertStats="INSERT INTO covidstats (countryId,date,lastCases,lastDeaths)
-                                                VALUES (:countryId,STR_TO_DATE(:date,:dateFormat),:lastCases,:lastDeaths)";
+            $sqlStatementInsertStats="INSERT INTO covidstats (userId,countryId,date,lastCases,lastDeaths)
+                                                VALUES (:userId,:countryId,STR_TO_DATE(:date,:dateFormat),:lastCases,:lastDeaths)";
             $pdoStatementInsertIntoCountries=$dbh->prepare($sqlStatementInsertStats);
-            $pdoStatementInsertIntoCountries->bindValue('countryId',$countryId,\PDO::PARAM_STR);
+            $pdoStatementInsertIntoCountries->bindValue('countryId',$countryId,\PDO::PARAM_INT);
             $pdoStatementInsertIntoCountries->bindValue('date',$date,\PDO::PARAM_STR);
             $pdoStatementInsertIntoCountries->bindValue('dateFormat','%d-%b-%Y',\PDO::PARAM_STR);
             $pdoStatementInsertIntoCountries->bindValue('lastCases',$newCases,\PDO::PARAM_INT);
             $pdoStatementInsertIntoCountries->bindValue('lastDeaths',$newDeaths,\PDO::PARAM_INT);
+            $pdoStatementInsertIntoCountries->bindValue('userId',$userId,\PDO::PARAM_INT);
             if(!$pdoStatementInsertIntoCountries->execute())
                 throw new \Exception('Something went wrong while inserting new corona stats');
         }

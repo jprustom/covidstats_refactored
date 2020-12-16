@@ -37,7 +37,7 @@
         $new_cases=(int)($_POST['newCases']);
         $new_deaths=(int)($_POST['newDeaths']);
         if ($user->isAdmin)
-            \Models\CovidStats::insertNewCoronaStats($countryId,$date,$new_cases,$new_deaths);
+            \Models\CovidStats::insertNewCoronaStats($countryId,$date,$new_cases,$new_deaths,$user->id);
         else \Models\CovidStats::insertPendingStat($user->id,$new_cases,$new_deaths,null,$date,$countryId);
 
         header("Location: ../../views/statsCRUD/statsCRUD.php?countryId=$countryId");

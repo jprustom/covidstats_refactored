@@ -20,9 +20,7 @@
         if (!isset($_POST['username']))
             throw new Exception('no username provided');
         $username=$_POST['username'];
-        if (!isset($user['email']))
-            return header('Location:../../views/auth/signIn.php');
-        $email=$user['email'];
+        $email=$user->email;
         if (!isset($_POST['oldPassword']))
             throw new Exception('old password was not provided');
         if (!isset($_POST['newPassword']))
@@ -31,7 +29,7 @@
             throw new Exception('confirmed password was not provided');
 
         $oldPassword=$_POST['oldPassword'];
-        if (sha1($oldPassword)!==$user['password'])
+        if (sha1($oldPassword)!==$user->password)
             throw new Exception('old password is incorrect');
         $newPassword=$_POST['newPassword'];
         $confirmNewPassword=$_POST['confirmNewPassword'];

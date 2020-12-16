@@ -63,7 +63,7 @@
                     <div class="pending-stats-table__header">Username</div>
                     <div style="font-size:1.5rem" class="pending-stats-table__header">Approve/Reject</div>
         </div>
-        <div class="pending-stats-table__entries">
+        
             <?php
                 if(count($pendingStatsToBeEdited)==0)
                     print("<h1>No Pending Stats</h1>");
@@ -80,15 +80,17 @@
                         $approveStatLink="../../controllers/pending/stat.php?id=$pendingCovidStatId&action=approve";
                         $rejectStatLink="../../controllers/pending/stat.php?id=$pendingCovidStatId&action=reject";
                         print "
+                            <div class='pending-stats-table__entries'>
                                 <div class='country'>$countryName</div>
                                 <div>$date</div>
                                 <div>$lastCases</div>
                                 <div>$lastDeaths</div>
                                 <div>$username</div>
-                                <div style='font-size:1.5rem'><a href='$approveStatLink'>Approve</a>/<a href='$rejectStatLink'>Reject</a></div>";
-                    }
+                                <div style='font-size:1.5rem'><a href='$approveStatLink'>Approve</a>/<a href='$rejectStatLink'>Reject</a></div>
+                            </div>";
+                            }
             ?>
-        </div>
+        
     </section>
 
     <section class="pending-stats-table add-stats">
@@ -101,30 +103,35 @@
                     <div class="pending-stats-table__header">Username</div>
                     <div style="font-size:1.5rem" class="pending-stats-table__header">Approve/Reject</div>
         </div>
-        <div class="pending-stats-table__entries">
-            <?php
-                if(count($pendingStatsToBeAdded)==0)
-                    print("<h1>No Pending Stats</h1>");
-                else 
-                    foreach($pendingStatsToBeAdded as $pendingStatToBeAdded){
-                        $country=\Models\Countries::getCountry($pendingStatToBeAdded->countryId);
-                        $countryName=ucwords($country->countryName);
-                        $date=$pendingStatToBeAdded->date;
-                        $lastCases=$pendingStatToBeAdded->lastCases;
-                        $lastDeaths=$pendingStatToBeAdded->lastDeaths;
-                        $username=\Models\User::getUsername($pendingStatToBeAdded->userId);
-                        $pendingCovidStatId=$pendingStatToBeAdded->id;
-                        $approveStatLink="../../controllers/pending/stat.php?id=$pendingCovidStatId&action=approve&insert";
-                        $rejectStatLink="../../controllers/pending/stat.php?id=$pendingCovidStatId&action=reject";
-                        print "
+
+        <?php
+            if(count($pendingStatsToBeAdded)==0)
+                print("<h1>No Pending Stats</h1>");
+            else 
+                foreach($pendingStatsToBeAdded as $pendingStatToBeAdded){
+                    $userId=$pendingStatToBeAdded->userId;
+                    $countryId=$pendingStatToBeAdded->countryId;
+                    $country=\Models\Countries::getCountry($countryId);
+                    $countryName=ucwords($country->countryName);
+                    $date=date('d-M-Y',strtotime($pendingStatToBeAdded->date));
+                    $lastCases=$pendingStatToBeAdded->lastCases;
+                    $lastDeaths=$pendingStatToBeAdded->lastDeaths;
+                    $username=\Models\User::getUsername($userId);
+                    $pendingCovidStatId=$pendingStatToBeAdded->id;
+                    $encodedDate=urlencode($date);
+                    $approveStatLink="../../controllers/pending/stat.php?id=$pendingCovidStatId&action=approve&countryId=$countryId&date=$encodedDate&cases=$lastCases&deaths=$lastDeaths&userId=$userId";
+                    $rejectStatLink="../../controllers/pending/stat.php?id=$pendingCovidStatId&action=reject";
+                    print "
+                            <div class='pending-stats-table__entries'>
                                 <div class='country'>$countryName</div>
                                 <div>$date</div>
                                 <div>$lastCases</div>
                                 <div>$lastDeaths</div>
                                 <div>$username</div>
-                                <div style='font-size:1.5rem'><a href='$approveStatLink'>Approve</a>/<a href='$rejectStatLink'>Reject</a></div>";
-                    }
-            ?>
-        </div>
+                                <div style='font-size:1.5rem'><a href='$approveStatLink'>Approve</a>/<a href='$rejectStatLink'>Reject</a></div>
+                            </div>";
+                }
+        ?>
+
     </section>
 </section>
