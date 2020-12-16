@@ -1,6 +1,6 @@
 <?php require_once('../../bootstrap.php');?>
-<?php if (!$_SESSION['user'])
-        header('Location:../../views/auth/signIn.php');?>
+<?php if (!isset($_SESSION['user']) || !$user->isAdmin)
+        header('Location:../../index.php');?>
 <?php \Library\Configs::generateHead('Error!','../../views/shared/images/icon.png',[
         "../../views/shared/main.css",
         "../../views/shared/navbar.css",
@@ -11,7 +11,8 @@
         "signInLink"=>"../../views/auth/signIn.php",
         "signOutLink"=>"../auth/signout.php",
         "editProfileLink"=>"../../views/auth/editProfile.php",
-        "pending"=>"../../views/pending/pending.php"
+        "pending"=>"../../views/pending/pending.php",
+        "memberSignUpLink"=>"../../views/auth/signUp.php",
     ]) ?>
 <?php
     try{

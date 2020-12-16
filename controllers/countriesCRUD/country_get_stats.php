@@ -1,6 +1,6 @@
 <?php require_once('../../controllers/countriesCRUD/countries_get.php');?>
-<?php if (!$_SESSION['user'])
-    header('Location:../auth/signIn.php');?>
+<?php if (!isset($_SESSION['user']) || !$user->isAdmin)
+    header('Location:../../index.php');?>
 <?php 
     if (!isset($_GET['countryId']))
         $_GET['countryId']=$countries[0]->id;

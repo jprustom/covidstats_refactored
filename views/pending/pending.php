@@ -77,7 +77,7 @@
                         $lastDeaths=$pendingStatToBeEdited->lastDeaths;
                         $username=\Models\User::getUsername($pendingStatToBeEdited->userId);
                         $pendingCovidStatId=$pendingStatToBeEdited->id;
-                        $approveStatLink="../../controllers/pending/stat.php?id=$pendingCovidStatId&action=approve";
+                        $approveStatUpdateLink="../../controllers/pending/stat.php?id=$pendingCovidStatId&action=approve";
                         $rejectStatLink="../../controllers/pending/stat.php?id=$pendingCovidStatId&action=reject";
                         print "
                             <div class='pending-stats-table__entries'>
@@ -86,7 +86,7 @@
                                 <div>$lastCases</div>
                                 <div>$lastDeaths</div>
                                 <div>$username</div>
-                                <div style='font-size:1.5rem'><a href='$approveStatLink'>Approve</a>/<a href='$rejectStatLink'>Reject</a></div>
+                                <div style='font-size:1.5rem'><a href='$approveStatUpdateLink'>Approve</a>/<a href='$rejectStatLink'>Reject</a></div>
                             </div>";
                             }
             ?>
@@ -118,8 +118,7 @@
                     $lastDeaths=$pendingStatToBeAdded->lastDeaths;
                     $username=\Models\User::getUsername($userId);
                     $pendingCovidStatId=$pendingStatToBeAdded->id;
-                    $encodedDate=urlencode($date);
-                    $approveStatLink="../../controllers/pending/stat.php?id=$pendingCovidStatId&action=approve&countryId=$countryId&date=$encodedDate&cases=$lastCases&deaths=$lastDeaths&userId=$userId";
+                    $approveStatLink="../../controllers/pending/stat.php?id=$pendingCovidStatId&action=approve&countryId=$countryId&date=$date&cases=$lastCases&deaths=$lastDeaths&userId=$userId";
                     $rejectStatLink="../../controllers/pending/stat.php?id=$pendingCovidStatId&action=reject";
                     print "
                             <div class='pending-stats-table__entries'>

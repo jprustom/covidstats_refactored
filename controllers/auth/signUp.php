@@ -14,6 +14,8 @@
     ]) ?>
 <?php
     try{
+        if (isset($SESSION['user']))
+            return header('Location:../../indexphp');
         if (!isset($_POST['username']))
             throw new Exception('username was not set');
         if (!isset($_POST['email']))

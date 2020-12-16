@@ -1,6 +1,6 @@
 <?php require_once('../../bootstrap.php');?>
-<?php if (!$user->isAdmin)
-        header('Location:../../views/statsCRUD/countries_view_last_stats/countries_view_last_stats.php');?>
+<?php if (!isset($_SESSION['user']) || !$user->isAdmin)
+        header('Location:../../index.php');?>
 <?php \Library\Configs::generateHead('Error!','../../views/shared/images/icon.png',[
         "../../views/shared/main.css",
         "../../views/shared/navbar.css",

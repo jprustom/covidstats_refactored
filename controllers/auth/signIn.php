@@ -14,15 +14,16 @@
     ]) ?>
 <?php
     try{
+        if (isset($_SESSION['user']))
+            return header('Location:../../index.php');
         if (!isset($_POST['email']))
-        throw new Exception('email was not provided');
+            throw new Exception('email was not provided');
         if (!isset($_POST['password']))
             throw new Exception('password was not provided');
         $email=$_POST['email'];
         $password=$_POST['password'];
         if (!filter_var($email, FILTER_VALIDATE_EMAIL))
             throw new Exception('not a valid email format.');
-
         $user=\Models\User::loginUser($email,$password);
         $_SESSION['user']=$user;
         header('Location:../../views/statsCRUD/countries_view_last_stats/countries_view_last_stats.php');

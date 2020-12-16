@@ -1,10 +1,10 @@
-<?php if (!$user->isAdmin)
-        header('Location:../../views/auth/signIn.php');?>
+<?php if (!isset($_SESSION['user']) || !$user->isAdmin)
+        header('Location:../../index.php');?>
 <?php 
     try{
         $pendingUsers=\Models\User::getPendingUsers();
-        $pendingStatsToBeEdited=\Models\CovidStats::getPendingStatsToEdit();
-        $pendingStatsToBeAdded=\Models\CovidStats::getPendingStatsToAdd();
+        $pendingStatsToBeEdited=\Models\PendingCovidStats::getPendingStatsToEdit();
+        $pendingStatsToBeAdded=\Models\PendingCovidStats::getPendingStatsToAdd();
     }
     catch(Exception $e){
         \Library\Configs::displayErrorMessage($e);

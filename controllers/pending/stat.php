@@ -1,6 +1,6 @@
 <?php require_once('../../bootstrap.php');?>
-<?php if (!$user->isAdmin)
-        header('Location:../../views/statsCRUD/countries_view_last_stats/countries_view_last_stats.php');?>
+<?php if (!isset($_SESSION['user']) || !$user->isAdmin)
+        header('Location:../../index.php');?>
 <?php \Library\Configs::generateHead('Error!','../../views/shared/images/icon.png',[
         "../../views/shared/main.css",
         "../../views/shared/navbar.css",
@@ -19,7 +19,7 @@
         if (isset($_GET['countryId']) && isset($_GET['date']) && isset($_GET['userId']) && isset($_GET['cases']) && isset($_GET['deaths'])){
             $insertNewStatMode=true;
             $countryId=$_GET['countryId'];
-            $date=urldecode($_GET['date']);
+            $date=$_GET['date'];
             $cases=$_GET['cases'];
             $deaths=$_GET['deaths'];
             $userId=$_GET['userId'];
@@ -36,12 +36,12 @@
             case 'approve':
                 if (isset($insertNewStatMode)){
                     \Models\CovidStats::insertNewCoronaStats($countryId,$date,$cases,$deaths,$userId);
-                    \Models\CovidStats::deletePendingStat($pendingStatId);
+                    \Models\PendingCovidStats::deletePendingStat($pendingStatId);
                 }
-                else \Models\CovidStats::approveStat($pendingStatId);
+                else \Models\PendingCovidStats::approveStatUpdate($pendingStatId);
                 break;
             case 'reject':
-                \Models\CovidStats::deletePendingStat($pendingStatId);
+                \Models\PendingCovidStats::deletePendingStat($pendingStatId);
                 break;
             default:
                 throw new Exception('invalid action, provide either reject or approve');

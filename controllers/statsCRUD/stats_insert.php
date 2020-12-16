@@ -1,7 +1,7 @@
 <?php date_default_timezone_set ('Asia/Beirut'); ?>
 <?php require_once('../../bootstrap.php');?>
-<?php if (!$_SESSION['user'])
-    header('Location:../../auth/signIn.php');?>
+<?php if (!isset($_SESSION['user']) || !$user->isAdmin)
+    header('Location:../../index.php');?>
 <?php \Library\Configs::generateHead('Error!','../../views/shared/images/icon.png',[
         "../../views/shared/main.css",
         "../../views/shared/navbar.css",
@@ -38,7 +38,7 @@
         $new_deaths=(int)($_POST['newDeaths']);
         if ($user->isAdmin)
             \Models\CovidStats::insertNewCoronaStats($countryId,$date,$new_cases,$new_deaths,$user->id);
-        else \Models\CovidStats::insertPendingStat($user->id,$new_cases,$new_deaths,null,$date,$countryId);
+        else \Models\PendingCovidStats::insertPendingStat($user->id,$new_cases,$new_deaths,null,$date,$countryId);
 
         header("Location: ../../views/statsCRUD/statsCRUD.php?countryId=$countryId");
     }

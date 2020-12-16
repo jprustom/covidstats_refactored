@@ -1,5 +1,5 @@
 <?php require_once('../../bootstrap.php');?>
-<?php if (!$_SESSION['user'])
+<?php if (!isset($_SESSION['user']) || !$user->isAdmin)
         header('Location:../../views/auth/signIn.php');?>
 <?php \Library\Configs::generateHead('Error!','../../views/shared/images/icon.png',[
         "../../views/shared/main.css",
