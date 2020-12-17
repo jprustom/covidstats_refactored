@@ -1,3 +1,4 @@
+<!-- SAMPLE ADMIN: phpprogrammer@live.com PASS=abcd1234 -->
 <?php session_start(['name'=>'covidstats']) ?>
 <?php
         //1-Check for session validity
@@ -5,9 +6,9 @@
         if ($isLoggedIn){
                 $user=$_SESSION['user'];
                 $isMember=$user->isAdmin==false;
-                if (!$isMember && isset($_SESSION['lastActivityTimeStamp'])){
+                if ($isMember && isset($_SESSION['lastActivityTimeStamp'])){
                         $lastActivityTimeStamp=$_SESSION['lastActivityTimeStamp'];
-                        if (time()-$lastActivityTimeStamp>15*60*1000)
+                        if (time()-$lastActivityTimeStamp>15*60)
                                 $_SESSION['user']=null;
                 }
                 //2-Update session timestamp

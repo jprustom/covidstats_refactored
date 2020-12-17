@@ -1,6 +1,4 @@
 
-<?php if (!$_SESSION['user'])
-        header('Location:../../views/auth/signIn.php');?>
 <?php
     try{
         $countries=\Models\Countries::fetchAllCountries();

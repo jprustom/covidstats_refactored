@@ -102,7 +102,7 @@ class User{
             if($pdoStatementSelectUser->execute()){
                 $user_returned=$pdoStatementSelectUser->fetch(\PDO::FETCH_OBJ);
                 if($pdoStatementSelectUser->rowCount()==0)
-                    throw new \Exception('Something went wrong, user was not updated');
+                    throw new \Exception('Invalid Credentials');
                 return $user_returned;
             }
             throw new \Exception('Could not update user');

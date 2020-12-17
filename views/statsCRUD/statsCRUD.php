@@ -1,6 +1,7 @@
 <?php require_once('../../bootstrap.php'); ?>
-<?php if (!$_SESSION['user'])
-    header('Location:../auth/signIn.php');?>
+<?php if (!isset($_SESSION['user']))
+    return header('Location:../auth/signIn.php');?>
+
 <?php \Library\Configs::generateHead('Stats','../shared/images/icon.png',[
     "../shared/main.css",
     "../shared/navbar.css",
@@ -17,6 +18,7 @@
 ]) ?>
 
 <?php require_once('../../controllers/countriesCRUD/country_get_stats.php');?>
+
 <body>
     <a id="addStat" href='<?php echo("country_add_stat/country_add_stat.php?countryId=$countryId")?>'>Add Stats</a>
     <div id='selectCountry'>
@@ -41,8 +43,9 @@
         $user=$_SESSION['user'];
         $isAdmin=$user->isAdmin;
         $isAccepted=$user->isAccepted;
-        if (!$isAccepted)
-                header('Location:./countries_view_last_stats/countries_view_last_stats.php');
+        if (!$isAccepted){
+                echo("not accepted");die();
+                header('Location:./countries_view_last_stats/countries_view_last_stats.php');}
     ?>
     <?php $numberOfColumns=
             $isAdmin

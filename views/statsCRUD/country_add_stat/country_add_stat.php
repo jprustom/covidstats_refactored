@@ -7,7 +7,7 @@
         "country_add_stat.css"
     ],[
         "homeLink"=>"../../statsCRUD/countries_view_last_stats/countries_view_last_stats.php",
-        "statsLink"=>"",
+        "statsLink"=>"../statsCRUD.php",
         "countriesLink"=>"../../countriesCRUD/countriesCRUD.php",
         "signInLink"=>"../../auth/signIn.php",
         "memberSignUpLink"=>"../../auth/signUp.php",
